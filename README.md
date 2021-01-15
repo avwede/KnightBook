@@ -1,4 +1,4 @@
-# KnightBook
+# KnightBook :telephone_receiver:
 A web application to store contacts. 
 
 ## Meet the Team! 
