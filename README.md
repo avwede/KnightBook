@@ -1,7 +1,8 @@
 # KnightBook
 A web application to store contacts. 
 
-## Processes for Object Oriented Software Development COP 4331 - Group 25  
+## Meet the Team: 
+### Processes for Object Oriented Software Development COP 4331 - Group 25  
 Adrian Cooper  
 Ashley Voglewede  
 Hannah Graves  
