@@ -1,9 +1,9 @@
 <?php
 
-// unpack JSON object
+// Unpack JSON object
 $inData = getRequestInfo();
 
-// make connection with database
+// Make connection with database
 $conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
 if ($conn->connect_error)
 {
@@ -11,14 +11,14 @@ if ($conn->connect_error)
 }
 else
 {
-    // check if username already exists, if it does tell user to try again
+    // Check if username already exists, if it does tell user to try again
     $sql = "SELECT ID FROM Users where Login='" . $inData["login"] . "'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) 
     {
         returnWithError("Username Has Been Taken");
     }
-    // if username does not exist, create account and log them in
+    // If username does not exist, create account and log them in
     else 
     {
         $sql = "INSERT INTO Users (Login, Password, FirstName, LastName) VALUES (" . $inData["login"] . "," . $inData["password"] . "," . $inData["firstName"] . "," . $inData["lastName"] . ")";
