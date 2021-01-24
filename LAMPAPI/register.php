@@ -5,7 +5,7 @@ $inData = getRequestInfo();
 
 // make connection with database
 // TODO: figure out what the arguements need to be
-$conn = new mysqli("", "", "", "");
+$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
 if ($conn->connect_error)
 {
     returnWithError($conn->connect_error);
@@ -27,22 +27,6 @@ else
         // FIXME: these are just placeholder names for the db and json package for now, they can be changed if needed
         $stmt->bind_param($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
         $stmt->execute();
-
-        $sql = "SELECT ID,firstName,lastName FROM Users where Login='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0)
-        {
-            $row = $result->fetch_assoc();
-            $firstName = $row["firstName"];
-            $lastName = $row["lastName"];
-            $id = $row["ID"];
-            
-            returnWithInfo($firstName, $lastName, $id );
-        }
-        else
-        {
-            returnWithError( "Unexpected Error: Could not get login information from registration" );
-        }
     }
     $conn->close();
 }

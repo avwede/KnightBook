@@ -7,7 +7,7 @@
 	$LastName = "";
 
 	// Opens a new connection with the MySQL server
-	$conn = new mysqli("localhost", "root", "COP4331", "database");
+	$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
 
 	// Check the connection, return an error if connection fails. 
 	if ($conn->connect_error) 

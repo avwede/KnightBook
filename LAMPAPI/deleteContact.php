@@ -3,8 +3,7 @@
 	// unpack JSON
 	$inData = getRequestInfo();
 
-	// TODO: connect to db
-	$conn = new mysqli("", "", "", "");
+	$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
 	// if cannot connect, return with error
 	if ($conn->connect_error)
 	{

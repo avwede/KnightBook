@@ -2,8 +2,8 @@
 
 	$inData = getRequestInfo();
 
-	// TODO: connect to db
-	$conn = new mysqli("", "", "", "");
+	// connect to db
+	$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
 	if ($conn->connect_error)
 	{
 		returnWithError($conn->connect_error);
