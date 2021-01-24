@@ -21,7 +21,7 @@ else
     // If username does not exist, create account and log them in
     else 
     {
-        $sql = "INSERT INTO Users (Login, Password, FirstName, LastName) VALUES (" . $inData["login"] . "," . $inData["password"] . "," . $inData["firstName"] . "," . $inData["lastName"] . ")";
+        $sql = "INSERT INTO Users (Login, Password, FirstName, LastName) VALUES ('" . $inData["login"] . "','" . $inData["password"] . "','" . $inData["firstName"] . "','" . $inData["lastName"] . "')";
         if ($conn->query($sql) === FALSE)
         {
             returnWithError("Could Not Create Account");
