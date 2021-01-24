@@ -21,11 +21,14 @@ else
     // if username does not exist, create account and log them in
     else 
     {
-        $sql = "INSERT INTO Users (Login, Password, FirstName, LastName) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // FIXME: these are just placeholder names for the db and json package for now, they can be changed if needed
-        $stmt->bind_param($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
-        $stmt->execute();
+        $sql = "INSERT INTO Users (Login, Password, FirstName, LastName) VALUES (" . $inData["login"] . "," . $inData["password"] . "," . $inData["firstName"] . "," . $inData["lastName"] . ")";
+        if ($conn->query($sql) === FALSE)
+        {
+            returnWithError("Could Not Create Account");
+        }
+        // $stmt = $conn->prepare($sql);
+        // $stmt->bind_param($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
+        // $stmt->execute();
     }
     $conn->close();
 }
