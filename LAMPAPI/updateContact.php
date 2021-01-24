@@ -3,7 +3,7 @@
 	$inData = getRequestInfo();
 
 	// Opens a new connection with the MySQL server
-	$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
+	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
 
 	// Check the connection, return an error if connection fails. 
 	if ($conn->connect_error) 

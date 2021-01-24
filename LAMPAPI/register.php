@@ -4,8 +4,7 @@
 $inData = getRequestInfo();
 
 // make connection with database
-// TODO: figure out what the arguements need to be
-$conn = new mysqli("localhost", "admin", "25!!Poos", "KnightBook");
+$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
 if ($conn->connect_error)
 {
     returnWithError($conn->connect_error);
