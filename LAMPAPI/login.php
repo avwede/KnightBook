@@ -2,33 +2,39 @@
 
 	$inData = getRequestInfo();
 	
-	$id = 0;
-	$firstName = "";
-	$lastName = "";
+	$ID = 0;
+	$FirstName = "";
+	$LastName = "";
 
-	// TODO: figure out what arguments need to be
-	$conn = new mysqli("", "", "", "");
+	// Opens a new connection with the MySQL server
+	$conn = new mysqli("localhost", "root", "COP4331", "database");
+
+	// Check the connection, return an error if connection fails. 
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$sql = "SELECT ID,firstName,lastName FROM Users where Login='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
+		// Process user input and query the database to see if the user's information is present.
+		$sql = "SELECT ID, FirstName, LastName FROM Users where Login='" . $inData["Login"] . "' and Password='" . $inData["Password"] . "'";
 		$result = $conn->query($sql);
+
 		if ($result->num_rows > 0)
 		{
+			// If the login info is present, put the results in an associative array and return JSON. 
 			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-			$id = $row["ID"];
+			$FirstName = $row["FirstName"];
+			$LastName = $row["LastName"];
+			$ID = $row["ID"];
 			
-			returnWithInfo($firstName, $lastName, $id );
+			returnWithInfo($FirstName, $LastName, $ID );
 		}
 		else
 		{
 			returnWithError( "No Records Found" );
 		}
+
 		$conn->close();
 	}
 	
@@ -45,13 +51,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"ID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"ID":' . $ID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
