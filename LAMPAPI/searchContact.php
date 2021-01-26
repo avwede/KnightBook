@@ -13,7 +13,9 @@
 	}
 	else
 	{
-		$sql = "SELECT (FirstName, LastName) from Contacts WHERE FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%' and UserID=" . $inData["userId"];
+		$sql = "SELECT (FirstName, LastName) from Contacts WHERE (FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%') and UserID=" . $inData["userId"];
+
+		// SELECT (FirstName, LastName) from Contacts WHERE (FirstName like '%s%' or LastName like '%s%') and UserID=2
 		
 		$result = $conn->query($sql);
 		
