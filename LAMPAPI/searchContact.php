@@ -14,7 +14,7 @@
 	else
 	{
 		// FIXME: add UserID later
-		$sql = "SELECT FirstName, LastName from Contacts WHERE FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%'";
+		$sql = "SELECT FirstName, LastName from Contacts WHERE FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%' and UserID=" . $inData["userId"];
 		
 		$result = $conn->query($sql);
 		
@@ -27,7 +27,6 @@
 					$searchResults .= ",";
 				}
 				$searchCount += 1;
-				// FIXME: not actually sure if this is right
 				$searchResults .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
 			}
 
@@ -35,8 +34,7 @@
 		}
 		else
 		{
-			returnWithError($sql);
-			// returnWithError("No Contacts Found.");
+			returnWithError("No Contacts Found.");
 		}
 
 		$conn->close();
