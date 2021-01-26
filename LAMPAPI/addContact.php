@@ -4,7 +4,7 @@
 
 	// connect to db
 	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
-	
+
 	if ($conn->connect_error)
 	{
 		returnWithError($conn->connect_error);
@@ -12,6 +12,8 @@
 	else
 	{
 		$sql = "INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone) VALUES (" . $inData["userId"] . ",'" . $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "')";
+
+		// INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone) VALUES (2, 'Stephen','Maldanado','stephen@gmail.com', 
 
 		if ($conn->query($sql) === FALSE)
 		{
@@ -45,7 +47,7 @@
 	function returnWithInfo( $message )
 	{
 		$retValue = '{"message":' . $message . '"}';
-		sendResultInfoAsJson( $message );
+		sendResultInfoAsJson( $retValue );
 	}
 
 ?>

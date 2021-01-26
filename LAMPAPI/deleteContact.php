@@ -41,7 +41,7 @@
 	function returnWithInfo( $message )
 	{
 		$retValue = '{"message":' . $message . '"}';
-		sendResultInfoAsJson( $message );
+		sendResultInfoAsJson( $retValue );
 	}
 	
 	function sendResultInfoAsJson( $obj )
