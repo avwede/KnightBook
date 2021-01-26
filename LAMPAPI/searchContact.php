@@ -29,16 +29,16 @@
 				// FIXME: not actually sure if this is right
 				$searchResults .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
 			}
+
+			returnWithInfo($searchResults);
 		}
 		else
 		{
-			returnWithError("No Contacts Found");
+			returnWithError("No Contacts Found.");
 		}
 
 		$conn->close();
 	}
-
-	returnWithInfo($searchResults);
 
 	function getRequestInfo()
 	{
@@ -62,5 +62,11 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
+
+	// Names:
+	// .....
+
+	// Email:
+	// .....
 
 ?>
