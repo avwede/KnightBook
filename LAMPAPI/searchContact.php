@@ -36,7 +36,8 @@
 		}
 		else
 		{
-			returnWithError("No Contacts Found.");
+			returnWithError($sql);
+			// returnWithError("No Contacts Found.");
 		}
 
 		$conn->close();
@@ -49,7 +50,7 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
