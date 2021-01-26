@@ -13,7 +13,18 @@
 	else
 	{
 		$sql = "DELETE FROM Contacts WHERE ID='" . $inData["id"] . "'";
-		$result = $conn->query($sql);
+		// DELETE FROM Contacts WHERE 
+		
+		if ($conn->query($sql) === FALSE)
+		{
+			returnWithError("Could not delete contact.");
+		}
+		else
+		{
+			returnWithInfo("Successfully deleted the contact.");
+		}
+		
+		
 		$conn->close();
 	}
 
@@ -26,5 +37,11 @@
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
+	}
+	
+	function returnWithInfo( $message )
+	{
+		$retValue = '{"message":' . $message . '"}';
+		sendResultInfoAsJson( $message );
 	}
 ?>
