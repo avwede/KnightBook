@@ -1,5 +1,5 @@
 # KnightBook :telephone_receiver:
-A web application to store contacts. Utilizes the LAMP Stack (Linux, Apache, MySQL, PHP).
+A web application to store contacts. Implements the LAMP Stack (Linux, Apache, MySQL, PHP) using a DigitalOcean droplet.
 
 ## Meet the Team! 
 ##### Processes for Object Oriented Software Development COP 4331 - Group 25   
