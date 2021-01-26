@@ -12,15 +12,41 @@
 	} 
 	else
 	{
-		$sql = "UPDATE Contacts SET FirstName=" . $inData["firstName"] . ", LastName=" . $inData["lastName"] ;
+		$sql = "UPDATE Contacts SET FirstName='" . $inData["firstName"] . "', LastName='" . $inData["lastName"] . "' WHERE UserID=" . $inData["userId"] . " and ID=" . $inData["id"];
+
+		if ($conn->query($sql) === FALSE)
+		{
+			returnWithError("Could not update contact.");
+		}
+		else
+		{
+			returnWithInfo("Successfully updated contact.");
+		}
+
+		$conn->close();
 	}
 
-
-
-		
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
+	}
+
+	function returnWithError( $err )
+	{
+		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function returnWithInfo( $message )
+	{
+		$retValue = '{"message":"' . $message . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
 	}
 
 ?>
