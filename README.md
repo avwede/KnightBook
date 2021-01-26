@@ -1,7 +1,7 @@
 # KnightBook :telephone_receiver:
 [knightbook.rocks](http://knightbook.rocks/)  
   
-A web application to store contacts. Implements the LAMP Stack (Linux, Apache, MySQL, PHP) using a DigitalOcean droplet.
+*A web application to store contacts.* Implements the LAMP Stack (Linux, Apache, MySQL, PHP) using a DigitalOcean droplet.
 
 ## Meet the Team! 
 ##### Processes for Object Oriented Software Development COP 4331 - Group 25   
