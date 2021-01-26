@@ -10,10 +10,11 @@
 	}
 	else
 	{
-		$sql = "INSERT INTO Contacts (FirstName, LastName, Email, Phone) VALUES (?, ?, ?, ?)";
-		$stmt = $conn->prepare($sql);
-		$stmt->bind_param($inData["firstName"], $inData["lastName"], $inData["email"], $inData["phone"]);
-		$stmt->execute();
+		$sql = "INSERT INTO Contacts (FirstName, LastName, Email, Phone) VALUES ('". $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "')";
+		if ($conn->query($sql) === FALSE)
+		{
+			returnWithError("Could Not Insert Contact");
+		}
 		$conn->close();
 	}
 
@@ -28,7 +29,7 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($obj)
 	{
 		header('Content-type: application/json');
 		echo $obj;
