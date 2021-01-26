@@ -24,7 +24,6 @@
 			returnWithInfo("Successfully deleted the contact.");
 		}
 		
-		
 		$conn->close();
 	}
 
@@ -43,5 +42,11 @@
 	{
 		$retValue = '{"message":' . $message . '"}';
 		sendResultInfoAsJson( $message );
+	}
+	
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
 	}
 ?>
