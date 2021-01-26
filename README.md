@@ -1,5 +1,5 @@
 # KnightBook :telephone_receiver:
-[knightbook.rocks](https://knightbook.rocks)  
+[KnightBook](https://knightbook.rocks)  
   
 A web application to store contacts. Implements the LAMP Stack (Linux, Apache, MySQL, PHP) using a DigitalOcean droplet.
 
