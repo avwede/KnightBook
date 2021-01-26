@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$sql = "UPDATE Contacts SET FirstName='" . $inData["firstName"] . "', LastName='" . $inData["lastName"] . "' WHERE UserID=" . $inData["userId"] . " and ID=" . $inData["id"];
+		$sql = "UPDATE Contacts SET FirstName='" . $inData["firstName"] . "', LastName='" . $inData["lastName"] . "', Email='" . $inData["email"] . "', Phone='" . $inData["phone"] . "' WHERE UserID=" . $inData["userId"] . " and ID=" . $inData["id"];
 
 		if ($conn->query($sql) === FALSE)
 		{
