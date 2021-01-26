@@ -6,6 +6,7 @@
 	$searchCount = 0;
 
 	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
+
 	if ($conn->connect_error)
 	{
 		returnWithError($conn->connect_error);
@@ -13,7 +14,9 @@
 	else
 	{
 		$sql = "SELECT (FirstName, LastName) from Contacts WHERE FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "' and UserID=" . $inData["userId"];
+		
 		$result = $conn->query($sql);
+		
 		if ($result->num_rows > 0)
 		{
 			while ($row = $result->fetch_assoc())
@@ -31,6 +34,7 @@
 		{
 			returnWithError("No Contacts Found");
 		}
+
 		$conn->close();
 	}
 
@@ -51,6 +55,12 @@
 	{
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
+	}
+
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
 	}
 
 ?>
