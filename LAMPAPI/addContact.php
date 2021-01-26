@@ -46,7 +46,7 @@
 
 	function returnWithInfo( $message )
 	{
-		$retValue = '{"message":' . $message . '"}';
+		$retValue = '{"message":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
