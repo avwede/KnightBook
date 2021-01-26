@@ -13,8 +13,8 @@
 	}
 	else
 	{
-		// FIXME: add UserID later
-		$sql = "SELECT FirstName, LastName from Contacts WHERE FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%' and UserID=" . $inData["userId"];
+		// FIXME: get userId working
+		$sql = "SELECT FirstName, LastName from Contacts WHERE (FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%') and UserID=" . $inData["userId"];
 		
 		$result = $conn->query($sql);
 		
