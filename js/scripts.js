@@ -19,7 +19,8 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 
 	// create json object for backend
-	var jsonPayload = `{"login" : "${login}", "password" : "${hash}"}`;
+	// var jsonPayload = `{"login" : "${login}", "password" : "${hash}"}`;
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 	var url = urlBase + '/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -45,7 +46,8 @@ function doLogin()
 		saveCookie();
 	
 		// FIXME: this should redirect user to home page, whatever that file gets called
-		window.location.href = "home.html";
+		// just checking to make sure link up works
+		window.location.href = "register.html";
 	}
 	catch(err)
 	{
