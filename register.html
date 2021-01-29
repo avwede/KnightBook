@@ -22,16 +22,18 @@
           <h1>KnightBook</h1>
         </div>
       </div>
-      <div class="row justify-content-center bg-secondary login">
+      <div class="row justify-content-center bg-secondary">
         <div class="col-md-6">
-        	<div class="heading">
-        		<h2>Log in, or register:</h2>
-        	</div>
-	      	<input type="text" id="loginName" class="form-control" placeholder="Username" /><br>
-			<input type="password" id="loginPassword" class="form-control" placeholder="Password"/><br>
-			<button type="button" id="loginButton" class="btn btn-warning endPageButton" onclick="doLogin();"> Log Me In </button>
-			<a id="registerLink" href="register.html" class="btn btn-warning endPageButton"> Register </a>
-			<span id="loginResult"></span>
+          <div class="heading">
+            <h2>Register for an account on KnightBook!</h2>
+          </div>
+          <input type="text" id="registerFirstName" class="form-control" placeholder="First Name"/><br>
+          <input type="text" id="registerLastName" class="form-control" placeholder="Last Name"/><br>
+          <input type="text" id="registerName" class="form-control" placeholder="Username" /><br>
+          <input type="password" id="registerPassword" class="form-control" placeholder="Password"/><br>
+          <button type="button" id="registerButton" class="btn btn-warning endPageButton" onclick="doRegister();"> Register </button><br>
+          <a href="index.html">Have an account? Login here.</a>
+          <span id="loginResult"></span>
         </div>
       </div>
     </div>

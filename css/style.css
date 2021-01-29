@@ -1,1 +1,17 @@
+.bg-secondary {
+	background-color: rgba(108, 117, 125, 0.5) !important;
+}
 
+.btn {
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+}
+
+.endPageButton {
+	margin-bottom: 60px !important;
+}
+
+.heading {
+	padding-top: 100px;
+	padding-bottom: 30px;
+}

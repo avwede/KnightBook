@@ -4,23 +4,30 @@
 
 	// connect to db
 	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
+
 	if ($conn->connect_error)
 	{
 		returnWithError($conn->connect_error);
 	}
 	else
 	{
-		$sql = "INSERT INTO Contacts (FirstName, LastName, Email, Phone) VALUES ('". $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "')";
+		$sql = "INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone) VALUES (" . $inData["userId"] . ",'" . $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "')";
+
 		if ($conn->query($sql) === FALSE)
 		{
-			returnWithError("Could Not Insert Contact");
+			returnWithError("Could not add contact.");
 		}
+		else
+		{
+			returnWithInfo("Successfully created the contact.");
+		}
+
 		$conn->close();
 	}
 
 	function returnWithError($err)
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
@@ -33,6 +40,12 @@
 	{
 		header('Content-type: application/json');
 		echo $obj;
+	}
+
+	function returnWithInfo( $message )
+	{
+		$retValue = '{"message":"' . $message . '"}';
+		sendResultInfoAsJson( $retValue );
 	}
 
 ?>
