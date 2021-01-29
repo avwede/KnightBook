@@ -31,7 +31,6 @@ function doLogin()
 		xhr.send(jsonPayload);
 		
 		var jsonObject = JSON.parse( xhr.responseText );
-		echo(jsonObject);
 		
 		userId = jsonObject.id;
 		
@@ -52,6 +51,7 @@ function doLogin()
 	}
 	catch(err)
 	{
+		alert(err.message); // FIXME: get rid of this
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
@@ -91,7 +91,7 @@ function doRegister()
 		saveCookie();
 	
 		// FIXME: this should redirect user to home page, whatever that file gets called
-		window.location.href = "home.html";
+		window.location.href = "index.html";
 	}
 	catch(err)
 	{
