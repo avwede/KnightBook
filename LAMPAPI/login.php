@@ -2,7 +2,7 @@
 
 	$inData = getRequestInfo();
 	
-	$ID = 0;
+	$id = 0;
 	$firstName = "";
 	$lastName = "";
 
@@ -24,9 +24,9 @@
 		{
 			// If the login info is present, put the results in an associative array and return JSON. 
 			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-			$ID = $row["ID"];
+			$firstName = $row["FirstName"];
+			$lastName = $row["LastName"];
+			$id = $row["ID"];
 			
 			returnWithInfo($firstName, $lastName, $ID );
 		}
