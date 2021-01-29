@@ -55,7 +55,6 @@ function doLogin()
 
 function doRegister()
 {
-
 	// fields that user will enter into register page
 	var firstName = document.getElementById("firstName").value;
 	var lastName = document.getElementById("lastName").value;
