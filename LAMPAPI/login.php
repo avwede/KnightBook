@@ -3,8 +3,8 @@
 	$inData = getRequestInfo();
 	
 	$ID = 0;
-	$FirstName = "";
-	$LastName = "";
+	$firstName = "";
+	$lastName = "";
 
 	// Opens a new connection with the MySQL server
 	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
@@ -17,18 +17,18 @@
 	else
 	{
 		// Process user input and query the database to see if the user's information is present.
-		$sql = "SELECT ID, FirstName, LastName FROM Users where Login='" . $inData["Login"] . "' and Password='" . $inData["Password"] . "'";
+		$sql = "SELECT ID, FirstName, LastName FROM Users where Login='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0)
 		{
 			// If the login info is present, put the results in an associative array and return JSON. 
 			$row = $result->fetch_assoc();
-			$FirstName = $row["FirstName"];
-			$LastName = $row["LastName"];
+			$firstName = $row["firstName"];
+			$lastName = $row["lastName"];
 			$ID = $row["ID"];
 			
-			returnWithInfo($FirstName, $LastName, $ID );
+			returnWithInfo($firstName, $lastName, $ID );
 		}
 		else
 		{
