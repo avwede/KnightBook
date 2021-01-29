@@ -59,17 +59,17 @@ function doLogin()
 function doRegister()
 {
 	// fields that user will enter into register page
-	var firstName = document.getElementById("firstName").value;
-	var lastName = document.getElementById("lastName").value;
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	var firstName = document.getElementById("registerFirstName").value;
+	var lastName = document.getElementById("registerLastName").value;
+	var login = document.getElementById("registerName").value;
+	var password = document.getElementById("registerPassword").value;
 	var hash = md5( password );
 	
 	// used to display to user return result of login attempt
-	document.getElementById("registerResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	// create json object for backend
-	var jsonPayload = `{"firstName" : "${firstName}", "lastName" : "${lastName}", "login" : "${login}", "password" : "${hash}"}`;
+	var jsonPayload = '{"firstName" : "' + firstName + '","lastName" : "' + lastName + '","login" : "' + login + '", "password" : "' + hash + '"}';
 	var url = urlBase + '/register.' + extension;
 
 	var xhr = new XMLHttpRequest();
