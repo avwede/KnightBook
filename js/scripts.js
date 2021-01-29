@@ -47,7 +47,7 @@ function doLogin()
 	
 		// FIXME: this should redirect user to home page, whatever that file gets called
 		// just checking to make sure link up works
-		window.location.href = "register.html";
+		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
@@ -91,7 +91,7 @@ function doRegister()
 		saveCookie();
 	
 		// FIXME: this should redirect user to home page, whatever that file gets called
-		window.location.href = "index.html";
+		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
