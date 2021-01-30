@@ -183,7 +183,11 @@ function searchContacts()
 					{
 						nameList += "<td>" + jsonObject.results[i][j] + "</td>";
 					}
-					nameList += "</tr>"
+
+					nameList += "<td class='buttons'>" +
+                  				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+                  				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+                				"</td></tr>"
 				}
 				
 				let table = document.getElementById("contactHeader");
