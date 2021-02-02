@@ -31,8 +31,6 @@ function doLogin()
 		xhr.send(jsonPayload);
 		
 		var jsonObject = JSON.parse( xhr.responseText );
-		echo(jsonObject);
-		
 		userId = jsonObject.id;
 		
 		if( userId < 1 )
@@ -87,7 +85,7 @@ function doRegister()
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 		if (userId == 0) {
-			document.getElementById("registerResult").innerHTML = jsonObject.error;
+			document.getElementById("loginResult").innerHTML = jsonObject.error;
 			return;
 		}
 
@@ -162,6 +160,7 @@ function searchContacts()
 	// var emailList = "";
 	// var phoneList = "";
 	// var majorList = "";
+	// var lastOnlineList = "";
 	
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
@@ -176,19 +175,24 @@ function searchContacts()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("searchResult").innerHTML = "Results:";
 				var jsonObject = JSON.parse( xhr.responseText );
 				
-				for( var i=0; i<jsonObject.results.length; i++ )
+				for(let i=0; i<jsonObject.results.length; i++ )
 				{
-					nameList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
+					nameList += "<tr>"
+					for (let j=0; j<jsonObject.results[i].length; j++)
 					{
-						nameList += "<br />\r\n";
+						nameList += "<td>" + jsonObject.results[i][j] + "</td>";
 					}
+
+					nameList += "<td class='buttons'>" +
+                  				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+                  				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+                				"</td></tr>"
 				}
 				
-				document.getElementsByTagName("p")[0].innerHTML = nameList;
+				let table = document.getElementById("contactHeader");
+				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
 		xhr.send(jsonPayload);
