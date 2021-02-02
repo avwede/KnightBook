@@ -46,9 +46,8 @@ function doLogin()
 
 		saveCookie();
 	
-		// FIXME: this should redirect user to home page, whatever that file gets called
-		// just checking to make sure link up works
 		window.location.href = "contacts.html";
+		document.getElementById("userName").innerHTML = firstName + " " + lastName;
 	}
 	catch(err)
 	{
@@ -95,6 +94,7 @@ function doRegister()
 		saveCookie();
 	
 		window.location.href = "contacts.html";
+		document.getElementById("userName").innerHTML = firstName + " " + lastName;
 	}
 	catch(err)
 	{
@@ -206,13 +206,11 @@ function addContact()
 	var lastName = document.getElementById("lastName").value;
 	var email = document.getElementById("email").value;
 	var phone = document.getElementById("phone").value;
-	// var major = document.getElementById("major").value;
+	var major = document.getElementById("major").value;
 
 	document.getElementById("contactAddResult").innerHTML = "";
 	
-	// TODO: add major functionality (var declared above) if there is time
-	var jsonPayload = 	`{ "firstName" : "${firstName}", "lastName" : "${lastName}", 
-						"email" : "${email}", "phone" : "${phone}" }`;
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "major" : "' + major + '"}';
 	var url = urlBase + '/addContact.' + extension;
 	
 	var xhr = new XMLHttpRequest();
@@ -220,14 +218,15 @@ function addContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-			}
-		};
+		// xhr.onreadystatechange = function() 
+		// {
+		// 	if (this.readyState == 4 && this.status == 200) 
+		// 	{
+		// 		document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+		// 	}
+		// };
 		xhr.send(jsonPayload);
+
 	}
 	catch(err)
 	{
