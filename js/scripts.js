@@ -58,7 +58,6 @@ function doLogin()
 
 function doRegister()
 {
-	alert("Made it");
 	// fields that user will enter into register page
 	var firstName = document.getElementById("registerFirstName").value;
 	var lastName = document.getElementById("registerLastName").value;
@@ -88,10 +87,12 @@ function doRegister()
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
+		if (userId == 0)
+			throw jsonObject.error;
 
 		saveCookie();
 	
-		// window.location.href = "contacts.html";
+		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
