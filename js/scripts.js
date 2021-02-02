@@ -95,7 +95,7 @@ function doRegister()
 	}
 	catch(err)
 	{
-		document.getElementById("registerResult").innerHTML = err.message;
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
 
