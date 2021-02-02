@@ -71,6 +71,7 @@ function doRegister()
 	// create json object for backend
 	var jsonPayload = '{"firstName" : "' + firstName + '","lastName" : "' + lastName + '","login" : "' + login + '", "password" : "' + hash + '"}';
 	var url = urlBase + '/register.' + extension;
+	alert(jsonPayload);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
@@ -87,12 +88,6 @@ function doRegister()
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
-		alert("Made it");
-		alert(userId);
-		if (userId == 0) {
-			document.getElementById("registerResult").innerHTML = jsonObject.error;
-			return;
-		}
 
 		saveCookie();
 	
