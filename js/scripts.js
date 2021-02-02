@@ -91,7 +91,7 @@ function doRegister()
 
 		saveCookie();
 	
-		window.location.href = "contacts.html";
+		// window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
