@@ -58,6 +58,7 @@ function doLogin()
 
 function doRegister()
 {
+	alert("Made it");
 	// fields that user will enter into register page
 	var firstName = document.getElementById("registerFirstName").value;
 	var lastName = document.getElementById("registerLastName").value;
@@ -71,7 +72,6 @@ function doRegister()
 	// create json object for backend
 	var jsonPayload = '{"firstName" : "' + firstName + '","lastName" : "' + lastName + '","login" : "' + login + '", "password" : "' + hash + '"}';
 	var url = urlBase + '/register.' + extension;
-	alert(jsonPayload);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
