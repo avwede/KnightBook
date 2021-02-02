@@ -87,8 +87,10 @@ function doRegister()
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
-		if (userId == 0)
-			throw jsonObject.error;
+		if (userId == 0) {
+			document.getElementById("loginResult").innerHTML = err.message;
+			return;
+		}
 
 		saveCookie();
 	
