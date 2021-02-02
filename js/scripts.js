@@ -82,14 +82,15 @@ function doRegister()
 		
 		// get response from api
 		var jsonObject = JSON.parse( xhr.responseText );
-		if (jsonObject.error != "") {
-			throw jsonObject.error;
-		}
 		
 		// save values from api response
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
+		if (userId == 0) {
+			document.getElementById("registerResult").innerHTML = jsonObject.error;
+			return;
+		}
 
 		saveCookie();
 	
