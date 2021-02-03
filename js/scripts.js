@@ -46,11 +46,9 @@ function doLogin()
 		saveCookie();
 	
 		window.location.href = "contacts.html";
-		document.getElementById("userName").innerHTML = firstName + " " + lastName;
 	}
 	catch(err)
 	{
-		alert(err.message); // FIXME: get rid of this
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
@@ -94,7 +92,6 @@ function doRegister()
 		saveCookie();
 	
 		window.location.href = "contacts.html";
-		document.getElementById("userName").innerHTML = firstName + " " + lastName;
 	}
 	catch(err)
 	{
@@ -213,6 +210,7 @@ function addContact()
 	var email = document.getElementById("email").value;
 	var phone = document.getElementById("phone").value;
 	var major = document.getElementById("major").value;
+	var lastOnline = document.getElementById("lastOnline").value;
 
 	document.getElementById("contactAddResult").innerHTML = "";
 	
@@ -224,15 +222,29 @@ function addContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		// xhr.onreadystatechange = function() 
-		// {
-		// 	if (this.readyState == 4 && this.status == 200) 
-		// 	{
-		// 		document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-		// 	}
-		// };
-		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+		
+				if (jsonObject.hasOwnProperty("error")) {
+					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+					return;
+				}
 
+				var newContact = "<tr><td>" + firstName + " " + lastName + "</td>" + 
+				"<td>" + email + "</td><td>" + phone + "</td><td>" + major + "</td>" + 
+				"<td>" + lastOnline + "</td>";
+
+				newContact += "	<td class='buttons'>" +
+				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+			"</td></tr>"
+				var table = getElementById("contacts").innerHTML += newContact;
+			}
+		};
+		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
@@ -240,14 +252,69 @@ function addContact()
 	}
 }
 
-// TODO: fill in body
 function updateContact() 
 {
+	var contactId = document.getElementById("contactId").value;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var email = document.getElementById("email").value;
+	var phone = document.getElementById("phone").value;
+	var major = document.getElementById("major").value;
 
+	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}" }`
+	document.getElementById("updateResult").innerHTML = "";
+
+	var url = urlBase + "/updateContact." + extension;
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+
+		if (jsonObject.hasOwnProperty("error"))
+		{
+			document.getElementById("updateResult").innerHTML = jsonObject.error;
+			return;
+		}
+
+		window.location.href = "contacts.html";
+	}
+	catch (err)
+	{
+		document.getElementById("updateResult").innerHTML = err.message;
+	}
 }
 
-// TODO: fill in body
 function deleteContact()
 {
+	var contactId = document.getElementById("contactId").value;
+	document.getElementById("deleteResult").innerHTML = "";
+	
+	var jsonPayload = `{ "id" : ${contactId} }`;
+	var url = urlBase + "/deleteContact." + extension;
 
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try 
+	{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+
+		if (jsonObject.hasOwnProperty("error")) 
+		{
+			document.getElementById("deleteResult").innerHTML = jsonObject.message;
+			return;
+		}
+
+		// FIXME: there may be a better way to refresh the page. I'm not sure
+		window.location.href = "contacts.html";
+	} 
+	catch(err)
+	{
+		document.getElementById("deleteResult").innerHTML = err.message;
+	}
+	
 }
