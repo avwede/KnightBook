@@ -11,7 +11,7 @@
 	}
 	else
 	{
-		$sql = "INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone) VALUES (" . $inData["userId"] . ",'" . $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "')";
+		$sql = "INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone, Major) VALUES (" . $inData["userId"] . ",'" . $inData["firstName"] . "','" . $inData["lastName"] . "','" . $inData["email"] . "','" . $inData["phone"] . "','" . $inData["major"] . "')";
 
 		if ($conn->query($sql) === FALSE)
 		{
