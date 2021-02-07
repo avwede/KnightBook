@@ -13,6 +13,20 @@ function doLogin()
 	
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
+
+	if (login === "" && password === "") {
+		document.getElementById("loginResult").innerHTML = "Please Enter Valid Username/Password combination";
+		return;
+	}
+	if (login === "") {
+		document.getElementById("loginResult").innerHTML = "Please enter a username";
+		return;
+	}
+	if (password === "") {
+		document.getElementById("loginResult").innerHTML = "Please enter a password";
+		return;
+	}
+
 	var hash = md5( password );
 	
 	// used to display to user return result of login attempt
@@ -61,6 +75,11 @@ function doRegister()
 	var login = document.getElementById("registerName").value;
 	var password = document.getElementById("registerPassword").value;
 	var hash = md5( password );
+
+	if (firstName === "" || lastName === "" || login === "" || password === "") {
+		document.getElementById("loginResult").innerHTML = "One or more fields missing";
+		return;
+	}
 	
 	// used to display to user return result of login attempt
 	document.getElementById("loginResult").innerHTML = "";
