@@ -38,7 +38,7 @@
 					$searchResultsMajor .= ",";
 				}
 				$searchCount += 1;
-				$searchResultsId .= '"' . "ID goes here" . '"';
+				$searchResultsId .= '"' . $row["ID"] . '"';
 				$searchResultsName .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
 				$searchResultsPhone .= '"' . $row["Phone"] . '"';
 				$searchResultsEmail .= '"' . $row["Email"] . '"';
