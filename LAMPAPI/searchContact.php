@@ -31,14 +31,14 @@
 			{
 				if ($searchCount > 0)
 				{
-					$seachResultsId .= ",";
+					$searchResultsId .= ",";
 					$searchResultsName .= ",";
 					$searchResultsEmail .= ",";
 					$searchResultsPhone .= ",";
 					$searchResultsMajor .= ",";
 				}
 				$searchCount += 1;
-				$searchResultsId .= '"' . strval($row["ID"]) . '"';
+				$searchResultsId .= '"' . "ID goes here" . '"';
 				$searchResultsName .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
 				$searchResultsPhone .= '"' . $row["Phone"] . '"';
 				$searchResultsEmail .= '"' . $row["Email"] . '"';
