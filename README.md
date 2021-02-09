@@ -1,4 +1,4 @@
-# KnightBook :telephone_receiver: https://github.com/avwede/KnightBook/blob/main/images/logo.png
+# KnightBook :telephone_receiver: ![knightbook logo](https://github.com/avwede/KnightBook/blob/main/images/logo.png)
 [knightbook.rocks](http://knightbook.rocks/)  
   
 **A web application to store contacts.**   
