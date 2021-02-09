@@ -17,7 +17,6 @@
 	}
 	else
 	{
-		// FIXME: get userId working
 		$sql = "SELECT ID, FirstName, LastName, Email, Phone, Major from Contacts WHERE
 				(FirstName like '%" . $inData["search"] . "%' or LastName like '%" . $inData["search"] . "%' 
 				or Email like '%" . $inData["search"] . "%' or Phone like '%" . $inData["search"] . "%' 
