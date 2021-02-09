@@ -1,4 +1,4 @@
-# <img src="/images/knightbookTextLogo.png"> <img src="/images/logo.png" width="50" height="50">
+# <img src="/images/knightbookTextLogo.png"> <img src="/images/logo.png" width="100" height="100">
 [knightbook.rocks](http://knightbook.rocks/)  
   
 **A web application to store contacts.**   
