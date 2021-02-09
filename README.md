@@ -1,5 +1,5 @@
 # KnightBook :telephone_receiver: 
-![test image size](/images/logo.pngs=200){:height="700px" width="400px"}
+<img src="/images/logo.png" width="100" height="100">
 [knightbook.rocks](http://knightbook.rocks/)  
   
 **A web application to store contacts.**   
