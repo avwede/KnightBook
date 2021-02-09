@@ -2,7 +2,11 @@
 
 	$inData = getRequestInfo();
 
-	$searchResults = "";
+	$searchResultsId = "";
+	$searchResultsName = "";
+	$searchResultsMajor = "";
+	$searchResultsPhone = "";
+	$searchResultsEmail = "";
 	$searchCount = 0;
 
 	$conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
@@ -24,13 +28,21 @@
 			{
 				if ($searchCount > 0)
 				{
-					$searchResults .= ",";
+					$seachResultsId .= ",";
+					$searchResultsName .= ",";
+					$searchResultsEmail .= ",";
+					$searchResultsPhone .= ",";
+					$searchResultsMajor .= ",";
 				}
 				$searchCount += 1;
-				$searchResults .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
+				$searchResultsId .= '"' . $row["ID"] . '"';
+				$searchResultsName .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
+				$searchResultsPhone .= '"' . $row["Phone"] . '"';
+				$searchResultsEmail .= '"' . $row["Email"] . '"';
+				$searchResultsMajor .= '"' . $row["Major"] . '"';
 			}
 
-			returnWithInfo($searchResults);
+			returnWithInfo($searchResultsId, $searchResultsName, $searchResultsPhone, $searchResultsEmail, $searchResultsMajor);
 		}
 		else
 		{
@@ -51,9 +63,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $searchResults )
+	function returnWithInfo( $id, $name, $phone, $email, $major )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"id":[' . $id . '], "name" : [' . $name . '], "phone" : [' . $phone . '], "email" : [' . $email . '], "major" : [' . $major . '], "error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
