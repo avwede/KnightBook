@@ -1,5 +1,7 @@
 # KnightBook :telephone_receiver: 
-![knightbook logo](/images/logo.png){:height="700px" width="400px"}
+![test image size](/images/logo.png){:class="img-responsive"}
+![test image size](/images/logo.png){:height="50%" width="50%"}
+![test image size](/images/logo.png){:height="700px" width="400px"}
 [knightbook.rocks](http://knightbook.rocks/)  
   
 **A web application to store contacts.**   
