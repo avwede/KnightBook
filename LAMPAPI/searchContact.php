@@ -38,7 +38,7 @@
 					$searchResultsMajor .= ",";
 				}
 				$searchCount += 1;
-				$searchResultsId .= $row["ID"];
+				$searchResultsId .= '"' . strval($row["ID"]) . '"';
 				$searchResultsName .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
 				$searchResultsPhone .= '"' . $row["Phone"] . '"';
 				$searchResultsEmail .= '"' . $row["Email"] . '"';
@@ -68,7 +68,7 @@
 
 	function returnWithInfo( $id, $name, $phone, $email, $major )
 	{
-		$retValue = '{"id":[' . $id . '], "name" : [' . $name . '], "phone" : [' . $phone . '], "email" : [' . $email . '], "major" : [' . $major . '], "error":""}';
+		$retValue = '{"id" : [' . $id . '], "name" : [' . $name . '], "phone" : [' . $phone . '], "email" : [' . $email . '], "major" : [' . $major . '], "error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
