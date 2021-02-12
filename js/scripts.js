@@ -13,6 +13,20 @@ function doLogin()
 	
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
+
+	if (login === "" && password === "") {
+		document.getElementById("loginResult").innerHTML = "Please Enter Valid Username/Password combination";
+		return;
+	}
+	if (login === "") {
+		document.getElementById("loginResult").innerHTML = "Please enter a username";
+		return;
+	}
+	if (password === "") {
+		document.getElementById("loginResult").innerHTML = "Please enter a password";
+		return;
+	}
+
 	var hash = md5( password );
 	
 	// used to display to user return result of login attempt
@@ -45,13 +59,10 @@ function doLogin()
 
 		saveCookie();
 	
-		// FIXME: this should redirect user to home page, whatever that file gets called
-		// just checking to make sure link up works
 		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
-		alert(err.message); // FIXME: get rid of this
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
@@ -64,9 +75,14 @@ function doRegister()
 	var login = document.getElementById("registerName").value;
 	var password = document.getElementById("registerPassword").value;
 	var hash = md5( password );
+
+	if (firstName === "" || lastName === "" || login === "" || password === "") {
+		document.getElementById("loginResult").innerHTML = "One or more fields missing";
+		return;
+	}
 	
 	// used to display to user return result of login attempt
-	document.getElementById("registerResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	// create json object for backend
 	var jsonPayload = '{"firstName" : "' + firstName + '","lastName" : "' + lastName + '","login" : "' + login + '", "password" : "' + hash + '"}';
@@ -87,15 +103,18 @@ function doRegister()
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
+		if (userId == 0) {
+			document.getElementById("loginResult").innerHTML = jsonObject.error;
+			return;
+		}
 
 		saveCookie();
 	
-		// FIXME: this should redirect user to home page, whatever that file gets called
 		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
-		document.getElementById("registerResult").innerHTML = err.message;
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 }
 
@@ -136,7 +155,7 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("userName").textContent = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("userName").innerHTML = "Welcome " + firstName + " " + lastName + "!";
 	}
 }
 
@@ -205,9 +224,16 @@ function searchContacts()
 
 function addContact()
 {
-	// TODO: add major functionality (var declared above) if there is time
-	var jsonPayload = 	`{ "firstName" : "${firstName}", "lastName" : "${lastName}", 
-						"email" : "${email}", "phone" : "${phone}" }`;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var email = document.getElementById("email").value;
+	var phone = document.getElementById("phone").value;
+	var major = document.getElementById("major").value;
+	var lastOnline = document.getElementById("lastOnline").value;
+
+	document.getElementById("contactAddResult").innerHTML = "";
+	
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "major" : "' + major + '"}';
 	var url = urlBase + '/addContact.' + extension;
 	
 	var xhr = new XMLHttpRequest();
@@ -219,25 +245,95 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("addContactResult").innerHTML = "Contact has been added";
+				var jsonObject = JSON.parse(xhr.responseText);
+		
+				if (jsonObject.hasOwnProperty("error")) {
+					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+					return;
+				}
+
+				var newContact = "<tr><td>" + firstName + " " + lastName + "</td>" + 
+				"<td>" + email + "</td><td>" + phone + "</td><td>" + major + "</td>" + 
+				"<td>" + lastOnline + "</td>";
+
+				newContact += "	<td class='buttons'>" +
+				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+			"</td></tr>"
+				var table = getElementById("contacts").innerHTML += newContact;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("addContactResult").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 }
 
-// TODO: fill in body
 function updateContact() 
 {
+	var contactId = document.getElementById("contactId").value;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var email = document.getElementById("email").value;
+	var phone = document.getElementById("phone").value;
+	var major = document.getElementById("major").value;
 
+	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}" }`
+	document.getElementById("updateResult").innerHTML = "";
+
+	var url = urlBase + "/updateContact." + extension;
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+
+		if (jsonObject.hasOwnProperty("error"))
+		{
+			document.getElementById("updateResult").innerHTML = jsonObject.error;
+			return;
+		}
+
+		window.location.href = "contacts.html";
+	}
+	catch (err)
+	{
+		document.getElementById("updateResult").innerHTML = err.message;
+	}
 }
 
-// TODO: fill in body
 function deleteContact()
 {
+	var contactId = document.getElementById("contactId").value;
+	document.getElementById("deleteResult").innerHTML = "";
+	
+	var jsonPayload = `{ "id" : ${contactId} }`;
+	var url = urlBase + "/deleteContact." + extension;
 
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try 
+	{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+
+		if (jsonObject.hasOwnProperty("error")) 
+		{
+			document.getElementById("deleteResult").innerHTML = jsonObject.message;
+			return;
+		}
+
+		// FIXME: there may be a better way to refresh the page. I'm not sure
+		window.location.href = "contacts.html";
+	} 
+	catch(err)
+	{
+		document.getElementById("deleteResult").innerHTML = err.message;
+	}
+	
 }
