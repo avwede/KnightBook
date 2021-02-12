@@ -178,11 +178,11 @@ function searchContacts()
 				
 				for(let i=0; i<jsonObject.results.length; i++ )
 				{
-					nameList += "<tr>"
-					for (let j=0; j<jsonObject.results[i].length; j++)
-					{
-						nameList += "<td>" + jsonObject.results[i][j] + "</td>";
-					}
+					nameList += `<tr id="${jsonObject.results["id"][i]}">`
+					nameList += `<td> ${jsonObject.results["name"][i]} </td>`;
+					nameList += `<td> ${jsonObject.results["phone"][i]} </td>`;
+					nameList += `<td> ${jsonObject.results["email"][i]} </td>`;
+					nameList += `<td> ${jsonObject.results["major"][i]} </td>`;
 
 					nameList += "<td class='buttons'>" +
                   				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
