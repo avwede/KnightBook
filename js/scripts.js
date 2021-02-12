@@ -174,11 +174,7 @@ function searchContacts()
 	document.getElementById("searchResult").innerHTML = "";
 	
 	// result for later
-	var nameList = "";
-	// var emailList = "";
-	// var phoneList = "";
-	// var majorList = "";
-	// var lastOnlineList = "";
+	var html = "";
 	
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
@@ -195,22 +191,25 @@ function searchContacts()
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
 				
-				for(let i=0; i<jsonObject.results.length; i++ )
+				for(let i=0; i<jsonObject.id.length; i++)
 				{
-					nameList += "<tr>"
+					html += `<tr id="${jsonObject.id[i]}">`;
 					for (let j=0; j<jsonObject.results[i].length; j++)
 					{
-						nameList += "<td>" + jsonObject.results[i][j] + "</td>";
+						html += `<td>${jsonObject.name[i]}</td>`;
+						html += `<td>${jsonObject.email[i]}</td>`;
+						html += `<td>${jsonObject.phone[i]}</td>`;
+						html += `<td>${jsonObject.major[i]}</td>`;
 					}
 
-					nameList += "<td class='buttons'>" +
+					html += "<td class='buttons'>" +
                   				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
 				}
 				
 				let table = document.getElementById("contactHeader");
-				table.insertAdjacentHTML("afterend", nameList);
+				table.insertAdjacentHTML("afterend", html);
 			}
 		};
 		xhr.send(jsonPayload);
