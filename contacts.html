@@ -23,25 +23,24 @@
           <h1><img src="images/knightbookTransparent.png" alt="Logo" style="vertical-align:middle"></h1>
         </div>
         <div class="col-md-3 align-self-center">
-          <p id="userName">username goes here</p>
-          <button type="button" id="logoutButton" class="btn btn-secondary float-right" onclick="doLogout();"> Log Out </button>
+          <div  class="float-right" style="float: right;" > username goes here <button type="button" id="logoutButton" class="btn btn-secondary" onclick="doLogout()"> Log Out </button> </div>
         </div>
       </div>
       <div class="row bg-secondary">
-        <div class="col-md-3 align-self-center">
+
+        <div class="col-md-4 align-self-center">
           <h2>Contact search:</h2>
         </div>
         <div class="col-md-2 align-self-center">
-          <input type="text" id="searchContacts"/>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "searchContacts"/>
+          </div>
         </div>
         <div class="col-md-2 align-self-center">
           <button type="button" id="searchContactsButton" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
         </div>
-        <div class="col-md-2 align-self-center">
-          <input type="text" id="addContact"/>
-        </div>
-        <div class="col-md-2 align-self-center">
-          <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal">Add Contact</button>
+        <div class="col-md-4 align-self-center">
+          <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal" style="float:right;">Add Contact</button>
         </div>
       </div>
       <div class="row bg-secondary">
