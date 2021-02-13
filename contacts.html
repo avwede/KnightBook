@@ -32,7 +32,9 @@
           <h2>Contact search:</h2>
         </div>
         <div class="col-md-2 align-self-center">
-          <input type="text" id="searchContacts"/>
+          <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "searchContacts"/>
+          </div>
         </div>
         <div class="col-md-2 align-self-center">
           <button type="button" id="searchContactsButton" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
