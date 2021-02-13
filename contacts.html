@@ -23,8 +23,8 @@
           <h1><img src="images/knightbookTransparent.png" alt="Logo" style="vertical-align:middle"></h1>
         </div>
         <div class="col-md-3 align-self-center">
-          <div id=userName>username goes here</div>
-          <button type="button" id="logoutButton" class="btn btn-secondary" onclick="doLogout();"> Log Out </button>
+          <p id="userName">username goes here</p>
+          <button type="button" id="logoutButton" class="btn btn-secondary float-right" onclick="doLogout();"> Log Out </button>
         </div>
       </div>
       <div class="row bg-secondary">
@@ -41,10 +41,33 @@
           <input type="text" id="addContact"/>
         </div>
         <div class="col-md-2 align-self-center">
-          <button type="button" id="addContactButton" class="btn btn-warning" onclick="addContact();">Add Contact</button>
+          <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal">Add Contact</button>
         </div>
       </div>
       <div class="row bg-secondary">
+        <div class="modal fade" id="addEditModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!--change this in js depending on which button is clicked-->
+                <h5 class="modal-title" id="addOrEdit">Add Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" id="contactFirstName" class="form-control" placeholder="First Name"/><br>
+                <input type="text" id="contactLastName" class="form-control" placeholder="Last Name"/><br>
+                <input type="text" id="contactEmail" class="form-control" placeholder="Email" /><br>
+                <input type="text" id="contactPhone" class="form-control" placeholder="Phone (ex: 555-555-5555)"/><br>
+                <input type="text" id="contactMajor" class="form-control" placeholder="Major"/><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-md-12 table-responsive align-self-center">
             <table class="table table-striped">
               <tr class="bg-warning" id="contactHeader">

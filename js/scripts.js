@@ -204,7 +204,7 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.results["major"][i]} </td>`;
 
 					nameList += "<td class='buttons'>" +
-                  				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+                  				"<i class='far fa-edit modify-btn btn btn-defualt' data-toggle='modal' data-target='#addEditModal'></i>" +
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
 				}
