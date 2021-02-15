@@ -1,4 +1,8 @@
 .bg-secondary {
+	background-color: rgba(108, 117, 125, 0) !important;
+}
+
+body {
 	background-color: rgba(108, 117, 125, 0.5) !important;
 }
 
@@ -34,4 +38,3 @@ table {
 td {
 	padding: 20px 8px !important;
 }
-
