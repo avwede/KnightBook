@@ -243,23 +243,25 @@ function addContact()
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 		
-				if (jsonObject.hasOwnProperty("error")) {
+				if (jsonObject.error !== "") {
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
-
-				var newContact = "<tr><td>" + firstName + " " + lastName + "</td>" + 
-				"<td>" + email + "</td><td>" + phone + "</td><td>" + major + "</td>" + 
-				"<td>" + lastOnline + "</td>";
+				
+				// TODO: add lastonline if there is time
+				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
 
 				newContact += "	<td class='buttons'>" +
 				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
 				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
 			"</td></tr>"
-				var table = getElementById("contacts").innerHTML += newContact;
+				getElementById("contacts").innerHTML += newContact;
+
+				// searchContacts();
 			}
 		};
 		xhr.send(jsonPayload);
+
 	}
 	catch(err)
 	{
