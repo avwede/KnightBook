@@ -171,10 +171,13 @@ function doLogout()
 function searchContacts()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("searchResult").innerHTML = "";
-	
+
+	var searchInsert = document.getElementById("searchResults");
+	if (searchInsert)
+		searchInsert.remove();
+
 	// result for later
-	var nameList = "";
+	// var nameList = "";
 	// var emailList = "";
 	// var phoneList = "";
 	// var majorList = "";
@@ -194,6 +197,7 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
+				nameList += "<div id='searchResults'>";
 				
 				for(let i=0; i<jsonObject.results.length; i++ )
 				{
@@ -209,6 +213,8 @@ function searchContacts()
                 				"</td></tr>"
 				}
 				
+				nameList += "</div>";
+
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
 			}

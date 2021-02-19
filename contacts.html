@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="col-md-6 align-self-center">
-          <button type="button" id="searchContactsButton" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
+          <button type="button" id="searchText" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
         </div>
         <div class="col-md-2 align-self-center">
           <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal" style="float:right;">Add Contact</button>
@@ -66,7 +66,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-1"><</div>
+        <div class="col-md-1"></div>
         <div class="col-md-10 table-responsive align-self-center">
             <table class="table table-striped">
               <tr class="bg-warning" id="contactHeader">
@@ -77,6 +77,7 @@
                 <th>Major</th>
                 <th></th>
               </tr>
+              <div id="searchResults">
               <tr>
                 <td>Joe</td>
                 <td>Biden</td>
@@ -99,6 +100,7 @@
                   <i class="fas fa-trash-alt modify-btn btn btn-default" onclick="deleteContact();"></i>
                 </td>
               </tr>
+              </div>
             </table>
             <!--<p id="contactList">No contacts found.</p>-->
         </div>
