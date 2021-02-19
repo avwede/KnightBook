@@ -40,7 +40,7 @@
 				}
 				$searchCount += 1;
 				$searchResultsId .= '"' . $row["ID"] . '"';
-				$searchResultsName .= '"' . $row["FirstName"] . '"';
+				$searchResultsFirstName .= '"' . $row["FirstName"] . '"';
 				$searchResultsLastName .= '"' . $row["LastName"] . '"';
 				$searchResultsPhone .= '"' . $row["Phone"] . '"';
 				$searchResultsEmail .= '"' . $row["Email"] . '"';
