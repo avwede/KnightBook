@@ -199,7 +199,7 @@ function searchContacts()
 				var jsonObject = JSON.parse( xhr.responseText );
 				nameList += "<div id='searchResults'>";
 				
-				for(let i=0; i<jsonObject.results.length; i++ )
+				for(let i=0; i<jsonObject.id.length; i++)
 				{
 					nameList += `<tr id="${jsonObject.results["id"][i]}">`
 					nameList += `<td> ${jsonObject.results["name"][i]} </td>`;
@@ -216,7 +216,7 @@ function searchContacts()
 				nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				table.insertAdjacentHTML("afterend", nameList);
+				table.insertAdjacentHTML("afterend", html);
 			}
 		};
 		xhr.send(jsonPayload);
@@ -253,23 +253,25 @@ function addContact()
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 		
-				if (jsonObject.hasOwnProperty("error")) {
+				if (jsonObject.error !== "") {
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
-
-				var newContact = "<tr><td>" + firstName + " " + lastName + "</td>" + 
-				"<td>" + email + "</td><td>" + phone + "</td><td>" + major + "</td>" + 
-				"<td>" + lastOnline + "</td>";
+				
+				// TODO: add lastonline if there is time
+				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
 
 				newContact += "	<td class='buttons'>" +
 				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
 				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
 			"</td></tr>"
-				var table = getElementById("contacts").innerHTML += newContact;
+				getElementById("contacts").innerHTML += newContact;
+
+				// searchContacts();
 			}
 		};
 		xhr.send(jsonPayload);
+
 	}
 	catch(err)
 	{

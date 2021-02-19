@@ -3,7 +3,8 @@
 	$inData = getRequestInfo();
 
 	$searchResultsId = "";
-	$searchResultsName = "";
+	$searchResultsFirstName = "";
+	$searchResultsLastName = "";
 	$searchResultsMajor = "";
 	$searchResultsPhone = "";
 	$searchResultsEmail = "";
@@ -31,20 +32,22 @@
 				if ($searchCount > 0)
 				{
 					$searchResultsId .= ",";
-					$searchResultsName .= ",";
+					$searchResultsFirstName .= ",";
+					$searchResultsLastName .= ",";
 					$searchResultsEmail .= ",";
 					$searchResultsPhone .= ",";
 					$searchResultsMajor .= ",";
 				}
 				$searchCount += 1;
 				$searchResultsId .= '"' . $row["ID"] . '"';
-				$searchResultsName .= '"' . $row["FirstName"] . ' ' . $row["LastName"] . '"';
+				$searchResultsFirstName .= '"' . $row["FirstName"] . '"';
+				$searchResultsLastName .= '"' . $row["LastName"] . '"';
 				$searchResultsPhone .= '"' . $row["Phone"] . '"';
 				$searchResultsEmail .= '"' . $row["Email"] . '"';
 				$searchResultsMajor .= '"' . $row["Major"] . '"';
 			}
 
-			returnWithInfo($searchResultsId, $searchResultsName, $searchResultsPhone, $searchResultsEmail, $searchResultsMajor);
+			returnWithInfo($searchResultsId, $searchResultsFirstName, $searchResultsLastName, $searchResultsPhone, $searchResultsEmail, $searchResultsMajor);
 		}
 		else
 		{
@@ -65,9 +68,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $id, $name, $phone, $email, $major )
+	function returnWithInfo( $id, $fname, $lname, $phone, $email, $major )
 	{
-		$retValue = '{"id" : [' . $id . '], "name" : [' . $name . '], "phone" : [' . $phone . '], "email" : [' . $email . '], "major" : [' . $major . '], "error":""}';
+		$retValue = '{"id" : [' . $id . '], "fname" : [' . $fname . '], "lname" : [' . $lname . '], "phone" : [' . $phone . '], "email" : [' . $email . '], "major" : [' . $major . '], "error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
@@ -76,11 +79,5 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-
-	// Names:
-	// .....
-
-	// Email:
-	// .....
 
 ?>

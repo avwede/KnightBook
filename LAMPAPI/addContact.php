@@ -19,7 +19,8 @@
 		}
 		else
 		{
-			returnWithInfo("Successfully created the contact.");
+			$getid = 'SELECT ID FROM Contacts WHERE FirstName="' . $inData["firstName"] . '" AND LastName="' . $inData["lastName"] . '" AND Email="' . $inData["email"] . '" AND Phone="' . $inData["phone"] . '" AND Major="' . $inData["major"] . '" AND UserID="' . $inData["userId"] . '"';
+			returnWithInfo($getid, "Successfully created the contact.");
 		}
 
 		$conn->close();
@@ -27,7 +28,7 @@
 
 	function returnWithError($err)
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"id" : 0, "message" : "", "error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
@@ -42,9 +43,9 @@
 		echo $obj;
 	}
 
-	function returnWithInfo( $message )
+	function returnWithInfo($id, $message)
 	{
-		$retValue = '{"message":"' . $message . '"}';
+		$retValue = '{"id" : ' . $id . ', "message" : "' . $message . '", "error": ""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
