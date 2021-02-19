@@ -220,12 +220,12 @@ function searchContacts()
 
 function addContact()
 {
-	var firstName = document.getElementById("firstName").value;
-	var lastName = document.getElementById("lastName").value;
-	var email = document.getElementById("email").value;
-	var phone = document.getElementById("phone").value;
-	var major = document.getElementById("major").value;
-	var lastOnline = document.getElementById("lastOnline").value;
+	var firstName = document.getElementById("contactFirstName").value;
+	var lastName = document.getElementById("contactLastName").value;
+	var email = document.getElementById("contactEmail").value;
+	var phone = document.getElementById("contactPhone").value;
+	var major = document.getElementById("contactMajor").value;
+	// var lastOnline = document.getElementById("lastOnline").value;
 
 	document.getElementById("contactAddResult").innerHTML = "";
 	
