@@ -38,11 +38,11 @@
         <div class="col-md-1"></div>
         <div class="col-md-2 align-self-center">
           <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "searchContacts"/>
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "searchContacts" onchange="searchContacts();"/>
           </div>
         </div>
         <div class="col-md-6 align-self-center">
-          <button type="button" id="searchText" class="btn btn-warning" onchange="searchContacts();">Search Contacts</button>
+          <button type="button" id="searchText" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
         </div>
         <div class="col-md-2 align-self-center">
           <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal" style="float:right;">Add Contact</button>
