@@ -176,6 +176,8 @@ function searchContacts()
 	if (searchInsert)
 		searchInsert.remove();
 
+	document.getElementById("searchResults").innerHTML = "";
+
 	// result for later
 	var nameList = "";
 	// var emailList = "";
