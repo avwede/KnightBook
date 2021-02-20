@@ -197,7 +197,7 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
-				nameList += "<div id='searchResults'>";
+				// nameList += "<div id='searchResults'>";
 				
 				for(let i=0; i<jsonObject.id.length; i++)
 				{
@@ -214,7 +214,7 @@ function searchContacts()
                 				"</td></tr>"
 				}
 				
-				nameList += "</div>";
+				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
 				searchInsert.innerHTML = "";
