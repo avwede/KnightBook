@@ -176,7 +176,8 @@ function searchContacts()
 	if (searchInsert)
 		searchInsert.remove();
 
-	document.getElementById("searchResults").innerHTML = "";
+	let table = document.getElementById("contactHeader");
+	table.innerHTML = "";
 
 	// result for later
 	var nameList = "";
@@ -218,7 +219,7 @@ function searchContacts()
 				
 				nameList += "</div>";
 
-				let table = document.getElementById("contactHeader");
+				// let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
