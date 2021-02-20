@@ -266,9 +266,9 @@ function addContact()
 				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
 				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
 			"</td></tr>"
-				getElementById("contacts").innerHTML += newContact;
+				getElementById("searchResults").innerHTML += newContact;
 
-				// searchContacts();
+				searchContacts();
 			}
 		};
 
