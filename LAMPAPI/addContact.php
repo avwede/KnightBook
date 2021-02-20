@@ -20,7 +20,13 @@
 		else
 		{
 			$getid = 'SELECT ID FROM Contacts WHERE FirstName="' . $inData["firstName"] . '" AND LastName="' . $inData["lastName"] . '" AND Email="' . $inData["email"] . '" AND Phone="' . $inData["phone"] . '" AND Major="' . $inData["major"] . '" AND UserID="' . $inData["userId"] . '"';
-			returnWithInfo($getid, "Successfully created the contact.");
+
+			$result = $conn->query($getid);
+
+			if ($result->num_rows > 0)
+				returnWithInfo($getid, "Successfully created the contact.");
+			else 
+				returnWithError("Could not add contact.");
 		}
 
 		$conn->close();
