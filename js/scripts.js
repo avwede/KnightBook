@@ -170,7 +170,7 @@ function doLogout()
 
 function searchContacts()
 {
-	var header = `<tr class="bg-warning" id="contactHeader"><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Major</th><th></th></tr>`;
+	var header = `<tr class="bg-warning" id="contactHeader"><th>First Name</th><th>Last Name</th><th>Phone</th><th>Email</th><th>Major</th><th></th></tr>`;
 	var srch = document.getElementById("searchText").value;
 
 	// var searchInsert = document.getElementById("searchResults");
