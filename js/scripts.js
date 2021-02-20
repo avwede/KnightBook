@@ -177,7 +177,7 @@ function searchContacts()
 		searchInsert.remove();
 
 	// result for later
-	// var nameList = "";
+	var nameList = "";
 	// var emailList = "";
 	// var phoneList = "";
 	// var majorList = "";
