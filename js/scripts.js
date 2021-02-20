@@ -217,8 +217,8 @@ function searchContacts()
 				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				searchInsert.innerHTML = nameList;
-				// table.insertAdjacentHTML("afterend", nameList);
+				searchInsert.innerHTML = "";
+				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
 		xhr.send(jsonPayload);
