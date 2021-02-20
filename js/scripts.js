@@ -59,7 +59,9 @@ function doLogin()
 
 		saveCookie();
 	
+		alert(userId);
 		window.location.href = "contacts.html";
+		alert(userId);
 	}
 	catch(err)
 	{
