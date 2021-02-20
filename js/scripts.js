@@ -170,7 +170,7 @@ function doLogout()
 
 function searchContacts()
 {
-	var srch = document.getElementById("searchContacts").value;
+	var srch = document.getElementById("searchText").value;
 
 	var searchInsert = document.getElementById("searchResults");
 	// if (searchInsert)
@@ -217,8 +217,8 @@ function searchContacts()
 				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				searchInsert.innerHTML = "";
-				table.insertAdjacentHTML("afterend", nameList);
+				searchInsert.innerHTML = nameList;
+				// table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
 		xhr.send(jsonPayload);
