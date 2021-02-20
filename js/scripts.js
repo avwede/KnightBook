@@ -173,9 +173,8 @@ function searchContacts()
 	var srch = document.getElementById("searchContacts").value;
 
 	var searchInsert = document.getElementById("searchResults");
-	searchInsert.innerHTML = "";
-	// if (searchInsert)
-	// 	searchInsert.remove();
+	if (searchInsert)
+		searchInsert.parentNode.removeChild();
 
 	// result for later
 	var nameList = "";
