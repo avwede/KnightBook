@@ -24,9 +24,14 @@
 			$result = $conn->query($getid);
 
 			if ($result->num_rows > 0)
-				returnWithInfo($getid, "Successfully created the contact.");
+			{
+				$row = $result->fetch_assoc();
+				returnWithInfo($row["ID"], "Successfully created the contact.");
+			}
 			else 
+			{
 				returnWithError("Could not add contact.");
+			}
 		}
 
 		$conn->close();
