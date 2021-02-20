@@ -173,8 +173,8 @@ function searchContacts()
 	var srch = document.getElementById("searchContacts").value;
 
 	var searchInsert = document.getElementById("searchResults");
-	if (searchInsert)
-		searchInsert.remove();
+	// if (searchInsert)
+	// 	searchInsert.remove();
 
 	// result for later
 	var nameList = "";
@@ -217,8 +217,8 @@ function searchContacts()
 				nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				table.innerHTML = nameList;
-				// table.insertAdjacentHTML("afterend", nameList);
+				searchInsert.innerHTML = "";
+				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
 		xhr.send(jsonPayload);
