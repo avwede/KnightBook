@@ -230,7 +230,6 @@ function searchContacts()
 
 function addContact()
 {
-	alert(userId);
 	var firstName = document.getElementById("contactFirstName").value;
 	var lastName = document.getElementById("contactLastName").value;
 	var email = document.getElementById("contactEmail").value;
@@ -239,8 +238,9 @@ function addContact()
 	// var lastOnline = document.getElementById("lastOnline").value;
 
 	document.getElementById("contactAddResult").innerHTML = "";
+
+	var jsonPayload = `{"firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}" , "phone" : "${phone}", "major" : "${major}", "userId" : ${userId}}`;
 	
-	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "major" : "' + major + '" + "userId" : ' + userId + '}';
 	alert(jsonPayload);
 	var url = urlBase + '/addContact.' + extension;
 	
