@@ -336,6 +336,25 @@ function deleteContact()
 	try 
 	{
 		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.stats == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+				
+				if (jsonObject.error != "")
+				{
+					document.getElementById("deleteResult").innerHTML = jsonObject.error;
+					return;
+				}
+				else
+				{
+					//remove contact
+					// $("td#del" + contactID).parent().remove();
+				}
+			}
+		}
+		
 		var jsonObject = JSON.parse(xhr.responseText);
 
 		if (jsonObject.hasOwnProperty("error")) 
