@@ -59,9 +59,7 @@ function doLogin()
 
 		saveCookie();
 	
-		alert(userId);
 		window.location.href = "contacts.html";
-		alert(userId);
 	}
 	catch(err)
 	{
@@ -232,6 +230,7 @@ function searchContacts()
 
 function addContact()
 {
+	alert(userId);
 	var firstName = document.getElementById("contactFirstName").value;
 	var lastName = document.getElementById("contactLastName").value;
 	var email = document.getElementById("contactEmail").value;
