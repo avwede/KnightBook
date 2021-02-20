@@ -172,9 +172,9 @@ function searchContacts()
 {
 	var srch = document.getElementById("searchContacts").value;
 
-	var searchInsert = document.getElementById("searchResults");
-	if (searchInsert)
-		searchInsert.remove();
+	var searchInsert = document.getElementById("searchResults").innerHTML = "";
+	// if (searchInsert)
+	// 	searchInsert.remove();
 
 	// result for later
 	var nameList = "";
