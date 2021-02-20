@@ -253,7 +253,7 @@ function addContact()
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 		
-				if (jsonObject.error !== "") {
+				if (jsonObject.error != "") {
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
