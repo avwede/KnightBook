@@ -254,7 +254,6 @@ function addContact()
 				var jsonObject = JSON.parse(xhr.responseText);
 		
 				if (jsonObject.error !== "") {
-					alert(jsonObject.error);
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
