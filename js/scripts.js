@@ -239,8 +239,7 @@ function addContact()
 
 	document.getElementById("contactAddResult").innerHTML = "";
 	
-	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "major" : "' + major + '"}';
-	alert(jsonPayload);
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName + '", "email" : "' + email + '", "phone" : "' + phone + '", "major" : "' + major + '" + "userId" : ' + userId + '}';
 	var url = urlBase + '/addContact.' + extension;
 	
 	var xhr = new XMLHttpRequest();
