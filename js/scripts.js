@@ -170,11 +170,13 @@ function doLogout()
 
 function searchContacts()
 {
+	var header = `<tr class="bg-warning" id="contactHeader"><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Major</th><th></th></tr>`;
 	var srch = document.getElementById("searchText").value;
 
-	var searchInsert = document.getElementById("searchResults");
+	// var searchInsert = document.getElementById("searchResults");
 	// if (searchInsert)
 	// 	searchInsert.remove();
+	document.getElementById("contacts").innerHTML = header;
 
 	// result for later
 	var nameList = "";
@@ -217,7 +219,6 @@ function searchContacts()
 				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				searchInsert.innerHTML = nameList;
 				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
