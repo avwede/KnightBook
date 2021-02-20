@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="col-md-6 align-self-center">
-          <button type="button" id="searchContactsButton" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
+          <button type="button" id="searchText" class="btn btn-warning" onclick="searchContacts();">Search Contacts</button>
         </div>
         <div class="col-md-2 align-self-center">
           <button type="button" id="addContactButton" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEditModal" style="float:right;">Add Contact</button>
@@ -78,6 +78,7 @@
                 <th>Major</th>
                 <th></th>
               </tr>
+              <div id="searchResults">
               <tr>
                 <td>Joe</td>
                 <td>Biden</td>
@@ -100,6 +101,7 @@
                   <i class="fas fa-trash-alt modify-btn btn btn-default" onclick="deleteContact();"></i>
                 </td>
               </tr>
+              </div>
             </table>
             <!--<p id="contactList">No contacts found.</p>-->
         </div>

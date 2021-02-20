@@ -171,10 +171,17 @@ function doLogout()
 function searchContacts()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("searchResult").innerHTML = "";
-	
+
+	var searchInsert = document.getElementById("searchResults");
+	if (searchInsert)
+		searchInsert.remove();
+
 	// result for later
-	var html = "";
+	// var nameList = "";
+	// var emailList = "";
+	// var phoneList = "";
+	// var majorList = "";
+	// var lastOnlineList = "";
 	
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
@@ -190,6 +197,7 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
+				nameList += "<div id='searchResults'>";
 				
 				for(let i=0; i<jsonObject.id.length; i++)
 				{
@@ -199,12 +207,14 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.results["email"][i]} </td>`;
 					nameList += `<td> ${jsonObject.results["major"][i]} </td>`;
 
-					html += "<td class='buttons'>" +
+					nameList += "<td class='buttons'>" +
                   				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
 				}
 				
+				nameList += "</div>";
+
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", html);
 			}
