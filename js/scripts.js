@@ -10,7 +10,7 @@ function doLogin()
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	
+
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
 
@@ -28,7 +28,7 @@ function doLogin()
 	}
 
 	var hash = md5( password );
-	
+
 	// used to display to user return result of login attempt
 	document.getElementById("loginResult").innerHTML = "";
 
@@ -43,22 +43,22 @@ function doLogin()
 	try
 	{
 		xhr.send(jsonPayload);
-		
+
 		var jsonObject = JSON.parse( xhr.responseText );
-		
+
 		userId = jsonObject.id;
-		
+
 		if( userId < 1 )
 		{
 			document.getElementById("loginResult").innerHTML = "Username/Password combination incorrect";
 			return;
 		}
-		
+
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 
 		saveCookie();
-	
+
 		window.location.href = "contacts.html";
 	}
 	catch(err)
@@ -80,7 +80,7 @@ function doRegister()
 		document.getElementById("loginResult").innerHTML = "One or more fields missing";
 		return;
 	}
-	
+
 	// used to display to user return result of login attempt
 	document.getElementById("loginResult").innerHTML = "";
 
@@ -95,10 +95,10 @@ function doRegister()
 	{
 		// send payload to register api
 		xhr.send(jsonPayload);
-		
+
 		// get response from api
 		var jsonObject = JSON.parse( xhr.responseText );
-		
+
 		// save values from api response
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
@@ -109,7 +109,7 @@ function doRegister()
 		}
 
 		saveCookie();
-	
+
 		window.location.href = "contacts.html";
 	}
 	catch(err)
@@ -122,7 +122,7 @@ function saveCookie()
 {
 	var minutes = 20;
 	var date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
+	date.setTime(date.getTime()+(minutes*60*1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
@@ -131,7 +131,7 @@ function readCookie()
 	userId = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
+	for(var i = 0; i < splits.length; i++)
 	{
 		var thisOne = splits[i].trim();
 		var tokens = thisOne.split("=");
@@ -148,7 +148,7 @@ function readCookie()
 			userId = parseInt( tokens[1].trim() );
 		}
 	}
-	
+
 	if( userId < 0 )
 	{
 		window.location.href = "index.html";
@@ -184,30 +184,30 @@ function searchContacts()
 	// var phoneList = "";
 	// var majorList = "";
 	// var lastOnlineList = "";
-	
+
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
 	var url = urlBase + '/searchContact.' + extension;
-	
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function() 
+		xhr.onreadystatechange = function()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
 				// nameList += "<div id='searchResults'>";
-				
+
 				for(let i=0; i<jsonObject.id.length; i++)
 				{
 					nameList += `<tr id="${jsonObject.id[i]}">`
 					nameList += `<td> ${jsonObject.fname[i]} </td>`;
 					nameList += `<td> ${jsonObject.lname[i]} </td>`
-					nameList += `<td> ${jsonObject.phone[i]} </td>`;
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
+					nameList += `<td> ${jsonObject.phone[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
 
 					nameList += "<td class='buttons'>" +
@@ -215,7 +215,7 @@ function searchContacts()
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
 				}
-				
+
 				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
@@ -244,24 +244,24 @@ function addContact()
 
 	var jsonPayload = `{"firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}" , "phone" : "${phone}", "major" : "${major}", "userId" : ${userId}}`;
 	var url = urlBase + '/addContact.' + extension;
-	
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
-		xhr.onreadystatechange = function() 
+		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200) 
+			if (this.readyState == 4 && this.status == 200)
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
-		
+
 				if (jsonObject.error != "") {
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
-				
+
 				// TODO: add lastonline if there is time
 				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
 
@@ -282,7 +282,7 @@ function addContact()
 	}
 }
 
-function updateContact() 
+function updateContact()
 {
 	var contactId = document.getElementById("contactId").value;
 	var firstName = document.getElementById("firstName").value;
@@ -321,19 +321,19 @@ function deleteContact()
 {
 	var contactId = document.getElementById("contactId").value;
 	document.getElementById("deleteResult").innerHTML = "";
-	
+
 	var jsonPayload = `{ "id" : ${contactId} }`;
 	var url = urlBase + "/deleteContact." + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try 
+	try
 	{
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse(xhr.responseText);
 
-		if (jsonObject.hasOwnProperty("error")) 
+		if (jsonObject.hasOwnProperty("error"))
 		{
 			document.getElementById("deleteResult").innerHTML = jsonObject.message;
 			return;
@@ -341,10 +341,10 @@ function deleteContact()
 
 		// FIXME: there may be a better way to refresh the page. I'm not sure
 		window.location.href = "contacts.html";
-	} 
+	}
 	catch(err)
 	{
 		document.getElementById("deleteResult").innerHTML = err.message;
 	}
-	
+
 }
