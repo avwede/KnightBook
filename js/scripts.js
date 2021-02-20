@@ -176,15 +176,14 @@ function searchContacts()
 	if (searchInsert)
 		searchInsert.remove();
 
-	let table = document.getElementById("contactHeader");
-	table.innerHTML = "";
-
 	// result for later
 	var nameList = "";
 	// var emailList = "";
 	// var phoneList = "";
 	// var majorList = "";
 	// var lastOnlineList = "";
+
+	document.getElementById("searchResults").innerHTML = "";
 	
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
@@ -200,7 +199,7 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
-				nameList += "<div id='searchResults'>";
+				// nameList += "<div id='searchResults'>";
 				
 				for(let i=0; i<jsonObject.id.length; i++)
 				{
@@ -217,9 +216,10 @@ function searchContacts()
                 				"</td></tr>"
 				}
 				
-				nameList += "</div>";
+				// nameList += "</div>";
 
 				// let table = document.getElementById("contactHeader");
+				let table = document.getElementById("searchResults");
 				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
