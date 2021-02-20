@@ -254,7 +254,7 @@ function addContact()
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 		
-				if (jsonObject.error.localeCompare("") != 0) {
+				if (jsonObject.error != "") {
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
