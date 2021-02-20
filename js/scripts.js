@@ -170,7 +170,7 @@ function doLogout()
 
 function searchContacts()
 {
-	var srch = document.getElementById("searchText").value;
+	var srch = document.getElementById("searchResults").value;
 
 	var searchInsert = document.getElementById("searchResults");
 	if (searchInsert)
