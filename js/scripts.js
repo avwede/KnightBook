@@ -217,7 +217,7 @@ function searchContacts()
 				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
-				searchInsert.innerHTML = "";
+				searchInsert.innerHTML = nameList;
 				table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
