@@ -182,8 +182,6 @@ function searchContacts()
 	// var phoneList = "";
 	// var majorList = "";
 	// var lastOnlineList = "";
-
-	document.getElementById("searchResults").innerHTML = "";
 	
 	// make json payload and send to api
 	var jsonPayload = `{ "search" : "${srch}", "userId" : ${userId} }`;
@@ -218,9 +216,9 @@ function searchContacts()
 				
 				// nameList += "</div>";
 
-				// let table = document.getElementById("contactHeader");
-				let table = document.getElementById("searchResults");
-				table.insertAdjacentHTML("afterend", nameList);
+				let table = document.getElementById("contactHeader");
+				table.innerHTML = nameList;
+				// table.insertAdjacentHTML("afterend", nameList);
 			}
 		};
 		xhr.send(jsonPayload);
