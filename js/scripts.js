@@ -247,6 +247,7 @@ function addContact()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
+		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() 
 		{
 			if (this.readyState == 4 && this.status == 200) 
@@ -270,7 +271,6 @@ function addContact()
 				// searchContacts();
 			}
 		};
-		xhr.send(jsonPayload);
 
 	}
 	catch(err)
