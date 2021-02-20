@@ -253,6 +253,11 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
+		
+				if (jsonObject.error.localeCompare("") != 0) {
+					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+					return;
+				}
 				
 				// TODO: add lastonline if there is time
 				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
