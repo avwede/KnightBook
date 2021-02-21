@@ -340,5 +340,5 @@ function deleteContact(id)
 		alert(err.message);
 	}
 
-	location.reload();
+	window.location.href = "contacts.html";
 }
