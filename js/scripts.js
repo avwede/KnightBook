@@ -201,10 +201,9 @@ function searchContacts()
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				alert(jsonObject);
-				
-				for(let i=0; i<jsonObject.fname.length; i++)
-				{
-					nameList += `<tr id="${jsonObject.id[i]}">`
+
+				jsonObject.id.array.forEach(id, i => {
+					nameList += `<tr id="${id}">`
 					nameList += `<td> ${jsonObject.fname[i]} </td>`;
 					nameList += `<td> ${jsonObject.lname[i]} </td>`
 					nameList += `<td> ${jsonObject.phone[i]} </td>`;
@@ -215,7 +214,22 @@ function searchContacts()
                   				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
-				}
+				});
+				
+				// for(let i=0; i<jsonObject.fname.length; i++)
+				// {
+				// 	nameList += `<tr id="${jsonObject.id[i]}">`
+				// 	nameList += `<td> ${jsonObject.fname[i]} </td>`;
+				// 	nameList += `<td> ${jsonObject.lname[i]} </td>`
+				// 	nameList += `<td> ${jsonObject.phone[i]} </td>`;
+				// 	nameList += `<td> ${jsonObject.email[i]} </td>`;
+				// 	nameList += `<td> ${jsonObject.major[i]} </td>`;
+
+				// 	nameList += "<td class='buttons'>" +
+                //   				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+                //   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+                // 				"</td></tr>"
+				// }
 
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
