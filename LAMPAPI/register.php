@@ -2,6 +2,9 @@
 
 // Unpack JSON object
 $inData = getRequestInfo();
+$firstName = "";
+$lastName = "";
+$id = 0;
 
 // Make connection with database
 $conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
@@ -38,8 +41,6 @@ else
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
 			$id = $row["ID"];
-			
-			returnWithInfo($firstName, $lastName, $id);
 		}
         else
         {
@@ -48,6 +49,8 @@ else
     }
     $conn->close();
 }
+
+returnWithInfo($firstName, $lastName, $id);
 
 function getRequestInfo()
 {
