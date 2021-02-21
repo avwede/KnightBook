@@ -160,7 +160,9 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("user").innerHTML = "Welcome<br>" + firstName + " " + lastName + "!";
+		var welcome = `Welcome<br>${firstName}`;
+		welcome += (lastName == "" ? "!" : (lastName + "!"));
+		document.getElementById("user").innerHTML = welcome;
 	}
 } 
 
