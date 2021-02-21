@@ -332,8 +332,6 @@ function deleteContact(id)
 				
 				if (jsonObject.error != "")
 					throw jsonObject.error;
-				
-				location.reload();
 			}
 		}
 	} 
@@ -341,4 +339,6 @@ function deleteContact(id)
 	{
 		alert(err.message);
 	}
+
+	location.reload();
 }
