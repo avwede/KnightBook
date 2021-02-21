@@ -6,6 +6,7 @@ var extension = 'php';
 var userId;
 var firstName;
 var lastName;
+var lastElement;
 
 function doLogin()
 {
@@ -217,6 +218,8 @@ function searchContacts()
 									<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
 									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
 								</td></tr>`;
+
+					lastElement = id;
 				});
 
 				let table = document.getElementById("contactHeader");
@@ -269,7 +272,7 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				let table = document.getElementById("contactHeader");
+				let table = document.getElementById(id);
 				table.insertAdjacentHTML("afterend", person);
 			}
 		};
