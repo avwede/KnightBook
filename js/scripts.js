@@ -199,6 +199,8 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
+
+				alert(jsonObject);
 				
 				for(let i=0; i<jsonObject.fname.length; i++)
 				{
