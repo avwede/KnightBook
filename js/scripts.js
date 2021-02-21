@@ -288,6 +288,7 @@ function addContact()
 	}
 
 	$('#addEditModal').modal('hide');
+	$('.modal-body').trigger("reset");
 }
 
 function updateContact(id) 
