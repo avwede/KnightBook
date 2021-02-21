@@ -202,7 +202,7 @@ function searchContacts()
 
 				alert(JSON.stringify(jsonObject));
 
-				jsonObject["id"].forEach(thing, i => {
+				jsonObject["id"].forEach((thing, i) => {
 					nameList += `<tr id="${thing}">`
 					nameList += `<td> ${jsonObject.fname[i]} </td>`;
 					nameList += `<td> ${jsonObject.lname[i]} </td>`
