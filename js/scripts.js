@@ -208,10 +208,15 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
 
-					nameList += "<td class='buttons'>" +
-                  				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
-                  				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
-                				"</td></tr>"
+					// nameList += "<td class='buttons'>" +
+                  	// 			"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+                  	// 			"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+                	// 			"</td></tr>"
+
+					nameList += `<td class='buttons'>
+									<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact(this.parentNode.id);'></i>
+									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this.parentNode.id);'></i>
+								</td></tr>`;
 				});
 
 				let table = document.getElementById("contactHeader");
@@ -281,7 +286,7 @@ function addContact()
 	$('#addEditModal').modal('hide');
 }
 
-function updateContact() 
+function updateContact(id) 
 {
 	var contactId = document.getElementById("contactId").value;
 	var firstName = document.getElementById("firstName").value;
@@ -316,12 +321,11 @@ function updateContact()
 	}
 }
 
-function deleteContact()
+function deleteContact(id)
 {
-	var contactId = document.getElementById("contactId").value;
 	document.getElementById("deleteResult").innerHTML = "";
 	
-	var jsonPayload = `{ "id" : ${contactId} }`;
+	var jsonPayload = `{ "id" : ${id} }`;
 	var url = urlBase + "/deleteContact." + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -341,24 +345,10 @@ function deleteContact()
 					document.getElementById("deleteResult").innerHTML = jsonObject.error;
 					return;
 				}
-				else
-				{
-					//remove contact
-					// $("td#del" + contactID).parent().remove();
-				}
+				
+				location.reload();
 			}
 		}
-		
-		var jsonObject = JSON.parse(xhr.responseText);
-
-		if (jsonObject.hasOwnProperty("error")) 
-		{
-			document.getElementById("deleteResult").innerHTML = jsonObject.message;
-			return;
-		}
-
-		// FIXME: there may be a better way to refresh the page. I'm not sure
-		window.location.href = "contacts.html";
 	} 
 	catch(err)
 	{
