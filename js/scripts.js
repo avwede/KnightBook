@@ -200,7 +200,7 @@ function searchContacts()
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
 
-				alert(jsonObject);
+				alert(JSON.stringify(jsonObject));
 
 				jsonObject.id.array.forEach(id, i => {
 					nameList += `<tr id="${id}">`
