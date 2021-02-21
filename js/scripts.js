@@ -355,5 +355,5 @@ function deleteContact(id)
 
 	document.getElementById(id).style.display = "none";
 	var index = elementIds.lastIndexOf(id);
-	elementIds.splice(index, 1);
+	elementIds[index] = -1;
 }
