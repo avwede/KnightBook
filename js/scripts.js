@@ -112,13 +112,14 @@ function doRegister()
 		}
 
 		saveCookie();
-	
-		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
 		document.getElementById("registerResult").innerHTML = err.message;
+		return;
 	}
+
+	window.location.href = "contacts.html";
 }
 
 function saveCookie()
