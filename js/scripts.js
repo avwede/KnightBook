@@ -6,8 +6,7 @@ var extension = 'php';
 var userId;
 var firstName;
 var lastName;
-var elementIds = [];
-var lastElement;
+var elementIds = ["contactHeader"];
 
 function doLogin()
 {
@@ -223,8 +222,6 @@ function searchContacts()
 					elementIds.push(id);
 				});
 
-				lastElement = elementIds[elementIds.length - 1]
-
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
 			}
@@ -275,13 +272,10 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				if (elementIds.length == 0)
-					lastElement = "contactHeader";
-				let table = document.getElementById(lastElement);
+				let table = document.getElementById(elementIds[elementIds.length - 1]);
 				table.insertAdjacentHTML("afterend", person);
 
 				elementIds.push(id);
-				lastElement = id;
 			}
 		};
 
@@ -363,6 +357,4 @@ function deleteContact(id)
 	document.getElementById(id).style.display = "none";
 	var index = elementIds.indexOf(id);
 	elementIds.splice(index, 1);
-
-	lastElement = elementIds[elementIds.length - 1];
 }
