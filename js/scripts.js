@@ -325,7 +325,6 @@ function deleteContact(id)
 {
 	id = id.parentElement.parentElement.id;
 	var jsonPayload = `{ "id" : ${id} }`;
-	alert(jsonPayload);
 	var url = urlBase + "/deleteContact." + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -343,7 +342,7 @@ function deleteContact(id)
 				if (jsonObject.error != "")
 					throw jsonObject.error;
 				
-				location.reload();
+				window.location.href = "contacts.html";
 			}
 		}
 	} 
