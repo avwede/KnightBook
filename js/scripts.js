@@ -273,11 +273,10 @@ function addContact()
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
 				alert(elementIds);
-				alert(elementIds[elementIds.length - 1])
-				let table = document.getElementById(elementIds[elementIds.length - 1]);
-				table.insertAdjacentHTML("afterend", person);
-
+				alert(elementIds[elementIds.length - 1]);
 				elementIds.push(id);
+				let table = document.getElementById(elementIds[elementIds.length - 2]);
+				table.insertAdjacentHTML("afterend", person);
 			}
 		};
 
@@ -356,9 +355,9 @@ function deleteContact(id)
 		return;
 	}
 
-	alert(elementIds.length);
+	alert(elementIds + " || " + id);
 	document.getElementById(id).style.display = "none";
 	var index = elementIds.indexOf(id);
 	elementIds.splice(index, 1);
-	alert(elementIds.length);
+	alert(elementIds);
 }
