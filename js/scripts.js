@@ -264,15 +264,6 @@ function addContact()
 				}
 
 				location.reload();
-				
-			// 	// TODO: add lastonline if there is time
-			// 	var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
-
-			// 	newContact += "	<td class='buttons'>" +
-			// 	"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
-			// 	"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
-			// "</td></tr>"
-			// 	getElementById("searchResults").innerHTML += newContact;
 			}
 		};
 
@@ -342,7 +333,7 @@ function deleteContact(id)
 				if (jsonObject.error != "")
 					throw jsonObject.error;
 				
-				window.location.href = "contacts.html";
+				location.reload();
 			}
 		}
 	} 
