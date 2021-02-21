@@ -272,8 +272,10 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				let table = document.getElementById(id);
+				let table = document.getElementById(lastElement);
 				table.insertAdjacentHTML("afterend", person);
+
+				lastElement = id;
 			}
 		};
 
