@@ -99,8 +99,10 @@ function doRegister()
 		// send payload to register api
 		xhr.send(jsonPayload);
 		
+		alert("before");
 		// get response from api
 		var jsonObject = JSON.parse( xhr.responseText );
+		alert("after");
 		
 		// save values from api response
 		userId = jsonObject.id;
@@ -209,11 +211,6 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.phone[i]} </td>`;
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
-
-					// nameList += "<td class='buttons'>" +
-                  	// 			"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
-                  	// 			"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
-                	// 			"</td></tr>"
 
 					nameList += `<td class='buttons'>
 									<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
