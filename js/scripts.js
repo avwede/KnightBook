@@ -333,7 +333,7 @@ function deleteContact(id)
 
 	document.getElementById(id).style.display = "none";
 	var index = lastElement.indexOf(id);
-	delete lastElement[index];
+	lastElement.splice(index, 1);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
