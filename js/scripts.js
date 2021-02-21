@@ -275,7 +275,7 @@ function addContact()
 				let table = document.getElementById(lastElement[lastElement.length - 1]);
 				table.insertAdjacentHTML("afterend", person);
 
-				lastElement.push(id);
+				lastElement.splice(lastElement.length, 0, id);
 			}
 		};
 
