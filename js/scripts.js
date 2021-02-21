@@ -257,6 +257,8 @@ function addContact()
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
+
+				location.reload();
 				
 			// 	// TODO: add lastonline if there is time
 			// 	var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
@@ -277,7 +279,6 @@ function addContact()
 	}
 
 	$('#addEditModal').modal('hide');
-	location.reload();
 }
 
 function updateContact() 
