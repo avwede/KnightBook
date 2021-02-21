@@ -347,6 +347,10 @@ function deleteContact(id)
 				
 				if (jsonObject.error != "")
 					throw jsonObject.error;
+
+				var table = getElementById("contacts");
+				lastElement = table.rows[table.rows.length - 1].id;
+				alert(lastElement);
 			}
 		}
 
