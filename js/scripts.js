@@ -276,9 +276,11 @@ function addContact()
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
-	$('#addEditModal').modal('hide');
-	$('#addContactButton').click(function() {
-		location.reload();
+	// $('#addEditModal').modal('hide');
+	$(document).ready(function() {
+		$('#addContactButton').click(function() {
+			location.reload();
+		});
 	});
 }
 
