@@ -6,7 +6,8 @@ var extension = 'php';
 var userId;
 var firstName;
 var lastName;
-var lastElement = [];
+var elementIds = [];
+var lastElement;
 
 function doLogin()
 {
@@ -219,8 +220,10 @@ function searchContacts()
 									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
 								</td></tr>`;
 
-					lastElement.push(id);
+					elementIds.push(id);
 				});
+
+				lastElement = elementIds[elementIds.length - 1];
 
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
@@ -272,10 +275,11 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				let table = document.getElementById(lastElement[lastElement.length - 1]);
+				let table = document.getElementById(lastElement);
 				table.insertAdjacentHTML("afterend", person);
 
-				lastElement.splice(lastElement.length, 0, id);
+				elementIds.push(id);
+				lastElement = id;
 			}
 		};
 
@@ -331,10 +335,6 @@ function deleteContact(id)
 	var jsonPayload = `{ "id" : ${id} }`;
 	var url = urlBase + "/deleteContact." + extension;
 
-	document.getElementById(id).style.display = "none";
-	var index = lastElement.indexOf(id);
-	lastElement.splice(index, 1);
-
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -350,15 +350,16 @@ function deleteContact(id)
 				if (jsonObject.error != "")
 					throw jsonObject.error;
 
-				
+				document.getElementById(id).style.display = "none";
+				var index = elementIds.indexOf(id);
+				elementIds.splice(index, 1);
+
+				lastElement = elementIds[elementIds.length - 1];
 			}
 		}
-
-		// location.reload();
 	} 
 	catch(err)
 	{
 		alert(err.message);
 	}
-	// window.location.href = "contacts.html";
 }
