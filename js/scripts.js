@@ -333,8 +333,6 @@ function deleteContact(id)
 				
 				if (jsonObject.error != "")
 					throw jsonObject.error;
-
-				searchContacts();
 			}
 		}
 	} 
@@ -343,5 +341,6 @@ function deleteContact(id)
 		alert(err.message);
 	}
 
+	searchContacts();
 	// window.location.href = "contacts.html";
 }
