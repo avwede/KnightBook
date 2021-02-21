@@ -8,32 +8,33 @@ var firstName;
 var lastName;
 var lastElement = "contactHeader";
 
-function doLogin(username, pass)
+function doLogin(username, pass, id)
 {
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
+	htmlID = id || "loginResult";
 	var login = username || document.getElementById("loginName").value;
 	var password = pass || document.getElementById("loginPassword").value;
 
 	if (login === "" && password === "") {
-		document.getElementById("loginResult").innerHTML = "Please Enter Valid Username/Password combination";
+		document.getElementById(htmlID).innerHTML = "Please Enter Valid Username/Password combination";
 		return;
 	}
 	if (login === "") {
-		document.getElementById("loginResult").innerHTML = "Please enter a username";
+		document.getElementById(htmlID).innerHTML = "Please enter a username";
 		return;
 	}
 	if (password === "") {
-		document.getElementById("loginResult").innerHTML = "Please enter a password";
+		document.getElementById(htmlID).innerHTML = "Please enter a password";
 		return;
 	}
 
 	var hash = md5( password );
 	
 	// used to display to user return result of login attempt
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById(htmlID).innerHTML = "";
 
 	// create json object for backend
 	// var jsonPayload = `{"login" : "${login}", "password" : "${hash}"}`;
@@ -53,7 +54,7 @@ function doLogin(username, pass)
 		
 		if( userId < 1 )
 		{
-			document.getElementById("loginResult").innerHTML = "Username/Password combination incorrect";
+			document.getElementById(htmlID).innerHTML = "Username/Password combination incorrect";
 			return;
 		}
 		
@@ -66,7 +67,7 @@ function doLogin(username, pass)
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById(htmlID).innerHTML = err.message;
 	}
 }
 
