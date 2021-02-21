@@ -268,7 +268,7 @@ function addContact()
 				person += `<td>${firstName}</td><td>${lastName}</td>`;
 				person += `<td>${phone}</td><td>${email}</td>`;
 				person += `<td>${major}</td>`;
-				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
+				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-default' onclick='editRow(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
 
 				let table = document.getElementById(lastElement);
@@ -293,18 +293,45 @@ function addContact()
 	document.getElementById("contactMajor").value = "";
 }
 
-function updateContact(id) 
+function editRow(id) 
 {
-	id = id.parentElement.parentElement.id;
-	var firstName = document.getElementById("firstName").value;
-	var lastName = document.getElementById("lastName").value;
-	var email = document.getElementById("email").value;
-	var phone = document.getElementById("phone").value;
-	var major = document.getElementById("major").value;
+	var parentId = id.parentElement.parentElement.id;
+	var tdList = document.getElementById(parentId).childNodes;
+	id.addEventListener("click", () => updateContact(tdList), true);
 
-	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}" }`
-	document.getElementById("updateResult").innerHTML = "";
+	for (var i = 1; i < 11; i += 2)
+	{
+		tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
+	}
 
+	id.className = "far fa-save modify-btn btn btn-default";
+	id.onclick = "";
+}
+
+function updateContact(tdList)
+{
+	contactId = tdList[1].parentElement.id;
+
+	var firstName = tdList[1].firstElementChild.value;
+	var lastName = tdList[3].firstElementChild.value;
+	var phone = tdList[5].firstElementChild.value;
+	var email = tdList[7].firstElementChild.value;
+	var major = tdList[9].firstElementChild.value;
+	var editButton = tdList[11].firstElementChild;
+
+	editButton.className = "far fa-edit modify-btn btn btn-default";
+	editButton.onclick = "editRow(this);";
+	editButtonNew = editButton.cloneNode();
+	editButton.parentNode.replaceChild(editButtonNew, editButton);
+
+	for (var i = 1; i < 11; i += 2)
+	{
+		tdList[i].innerHTML = `${tdList[i].firstElementChild.value}`;
+	}
+
+	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}" }`;
+	document.getElementById("searchResults").innerHTML = "";
+	
 	var url = urlBase + "/updateContact." + extension;
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -316,7 +343,7 @@ function updateContact(id)
 
 		if (jsonObject.hasOwnProperty("error"))
 		{
-			document.getElementById("updateResult").innerHTML = jsonObject.error;
+			document.getElementById("searchResults").innerHTML = jsonObject.error;
 			return;
 		}
 
@@ -325,7 +352,7 @@ function updateContact(id)
 	}
 	catch (err)
 	{
-		document.getElementById("updateResult").innerHTML = err.message;
+		document.getElementById("searchResults").innerHTML = err.message;
 	}
 }
 
