@@ -263,7 +263,7 @@ function addContact()
 					return;
 				}
 
-				var person = `<tr id="${jsonObject.id}>"`;
+				var person = `<tr id="${jsonObject.id}">`;
 				person += `<td>${firstName}</td><td>${lastName}</td>`;
 				person += `<td>${phone}</td><td>${email}</td>`;
 				person += `<td>${major}</td>`;
