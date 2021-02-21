@@ -203,7 +203,7 @@ function searchContacts()
 				jsonObject["id"].forEach((id, i) => {
 					nameList += `<tr id="${id}">`
 					nameList += `<td> ${jsonObject.fname[i]} </td>`;
-					nameList += `<td> ${jsonObject.lname[i]} </td>`
+					nameList += `<td> ${jsonObject.lname[i]} </td>`;
 					nameList += `<td> ${jsonObject.phone[i]} </td>`;
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
@@ -267,10 +267,7 @@ function addContact()
 				person += `<td>${firstName}</td><td>${lastName}</td>`;
 				person += `<td>${phone}</td><td>${email}</td>`;
 				person += `<td>${major}</td>`;
-				person += `<td class='buttons'>
-				<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
-				<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
-			</td></tr>`;
+				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", person);
