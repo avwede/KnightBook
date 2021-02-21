@@ -264,6 +264,8 @@ function addContact()
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
+
+				window.href.location = "contacts.html";
 				
 				// TODO: add lastonline if there is time
 				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
@@ -273,8 +275,6 @@ function addContact()
 				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
 			"</td></tr>"
 				getElementById("searchResults").innerHTML += newContact;
-
-				window.href.location = "contacts.html";
 			}
 		};
 
