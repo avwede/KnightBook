@@ -99,10 +99,8 @@ function doRegister()
 		// send payload to register api
 		xhr.send(jsonPayload);
 		
-		alert("before");
 		// get response from api
 		var jsonObject = JSON.parse( xhr.responseText );
-		alert("after");
 		
 		// save values from api response
 		userId = jsonObject.id;
@@ -114,14 +112,13 @@ function doRegister()
 		}
 
 		saveCookie();
+		window.location.href = "contacts.html";
 	}
 	catch(err)
 	{
 		document.getElementById("registerResult").innerHTML = err.message;
 		return;
 	}
-
-	window.location.href = "contacts.html";
 }
 
 function saveCookie()
