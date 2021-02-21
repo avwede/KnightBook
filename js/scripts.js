@@ -349,13 +349,11 @@ function deleteContact(id)
 	} 
 	catch(err)
 	{
-		alert(err.message);
+		// alert(err.message);
 		return;
 	}
 
-	alert(elementIds + " || " + id);
 	document.getElementById(id).style.display = "none";
 	var index = elementIds.indexOf(id);
 	elementIds.splice(index, 1);
-	alert(elementIds);
 }
