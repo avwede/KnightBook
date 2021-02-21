@@ -114,7 +114,7 @@ function doRegister()
 			return;
 		}
 
-		doLogin(login, password);
+		doLogin(login, password, "registerResult");
 	}
 	catch(err)
 	{
