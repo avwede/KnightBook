@@ -112,7 +112,7 @@ function doRegister()
 		}
 
 		saveCookie();
-		window.location.href = "contacts.html";
+		window.location.replace("contacts.html");
 	}
 	catch(err)
 	{
