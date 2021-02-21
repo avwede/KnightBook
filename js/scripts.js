@@ -289,6 +289,10 @@ function addContact()
 
 	$('#addEditModal').modal('hide');
 	document.getElementById("contactFirstName").value = "";
+	document.getElementById("contactLastName").value = "";
+	document.getElementById("contactEmail").value= "";
+	document.getElementById("contactPhone").value = "";
+	document.getElementById("contactMajor").value = "";
 }
 
 function updateContact(id) 
