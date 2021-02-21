@@ -161,7 +161,7 @@ function readCookie()
 	else
 	{
 		var welcome = `Welcome<br>${firstName}`;
-		welcome += (lastName == "" ? "!" : (lastName + "!"));
+		welcome += (lastName == "" ? "!" : (" " + lastName + "!"));
 		document.getElementById("user").innerHTML = welcome;
 	}
 } 
