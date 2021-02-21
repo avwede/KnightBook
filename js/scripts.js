@@ -6,7 +6,7 @@ var extension = 'php';
 var userId;
 var firstName;
 var lastName;
-var lastElement;
+var lastElement = [];
 
 function doLogin()
 {
@@ -219,7 +219,7 @@ function searchContacts()
 									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
 								</td></tr>`;
 
-					lastElement = id;
+					lastElement.push(id);
 				});
 
 				let table = document.getElementById("contactHeader");
@@ -272,10 +272,10 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				let table = document.getElementById(lastElement);
+				let table = document.getElementById(lastElement[lastElement.length - 1]);
 				table.insertAdjacentHTML("afterend", person);
 
-				lastElement = id;
+				lastElement.push(id);
 			}
 		};
 
@@ -332,6 +332,8 @@ function deleteContact(id)
 	var url = urlBase + "/deleteContact." + extension;
 
 	document.getElementById(id).style.display = "none";
+	var index = lastElement.indexOf(id);
+	delete lastElement[index];
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -348,9 +350,7 @@ function deleteContact(id)
 				if (jsonObject.error != "")
 					throw jsonObject.error;
 
-				var table = getElementById("contacts");
-				lastElement = table.rows[table.rows.length - 1].id;
-				alert(lastElement);
+				
 			}
 		}
 
