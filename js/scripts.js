@@ -1,3 +1,5 @@
+
+
 var urlBase = 'http://knightbook.rocks/LAMPAPI';
 var extension = 'php';
 
@@ -126,6 +128,7 @@ function saveCookie()
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
+
 function readCookie()
 {
 	userId = -1;
@@ -157,7 +160,7 @@ function readCookie()
 	{
 		document.getElementById("user").innerHTML = "Welcome " + firstName + " " + lastName + "!";
 	}
-}
+} 
 
 function doLogout()
 {
@@ -280,6 +283,8 @@ function addContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
+
+	$('#addEditModal').modal('hide');
 }
 
 function updateContact()
@@ -331,6 +336,25 @@ function deleteContact()
 	try
 	{
 		xhr.send(jsonPayload);
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.stats == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+				
+				if (jsonObject.error != "")
+				{
+					document.getElementById("deleteResult").innerHTML = jsonObject.error;
+					return;
+				}
+				else
+				{
+					//remove contact
+					// $("td#del" + contactID).parent().remove();
+				}
+			}
+		}
+		
 		var jsonObject = JSON.parse(xhr.responseText);
 
 		if (jsonObject.hasOwnProperty("error"))
