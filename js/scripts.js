@@ -288,7 +288,7 @@ function addContact()
 	}
 
 	$('#addEditModal').modal('hide');
-	$('.modal-body').trigger("reset");
+	document.getElementById("contactFirstName").value = "";
 }
 
 function updateContact(id) 
