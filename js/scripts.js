@@ -341,10 +341,7 @@ function deleteContact(id)
 				var jsonObject = JSON.parse(xhr.responseText);
 				
 				if (jsonObject.error != "")
-				{
-					document.getElementById("deleteResult").innerHTML = jsonObject.error;
-					return;
-				}
+					throw jsonObject.error;
 				
 				location.reload();
 			}
@@ -352,7 +349,6 @@ function deleteContact(id)
 	} 
 	catch(err)
 	{
-		document.getElementById("deleteResult").innerHTML = err.message;
+		alert(err.message);
 	}
-	
 }
