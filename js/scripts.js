@@ -273,10 +273,11 @@ function addContact()
 	catch(err)
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
+		return;
 	}
 
 	$('#addEditModal').modal('hide');
-	// location.reload();
+	location.reload();
 }
 
 function updateContact() 
