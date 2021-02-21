@@ -263,7 +263,17 @@ function addContact()
 					return;
 				}
 
-				location.reload();
+				var person = `<tr id="${jsonObject.id}>"`;
+				person += `<td>${firstName}</td><td>${lastName}</td>`;
+				person += `<td>${phone}</td><td>${email}</td>`;
+				person += `<td>${major}</td>`;
+				person += `<td class='buttons'>
+				<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
+				<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
+			</td></tr>`;
+
+				let table = document.getElementById("contactHeader");
+				table.insertAdjacentHTML("afterend", person);
 			}
 		};
 
