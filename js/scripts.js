@@ -335,12 +335,11 @@ function deleteContact(id)
 					throw jsonObject.error;
 			}
 		}
+		searchContacts();
 	} 
 	catch(err)
 	{
 		alert(err.message);
 	}
-
-	searchContacts();
 	// window.location.href = "contacts.html";
 }
