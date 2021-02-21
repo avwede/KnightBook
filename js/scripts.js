@@ -272,10 +272,7 @@ function addContact()
 				person += `<td>${major}</td>`;
 				person += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
-				elementIds.push(id);
-				alert(id);
-				alert(elementIds);
-				alert(elementIds[elementIds.length - 1]);
+				elementIds.push(jsonObject.id);
 				let table = document.getElementById(elementIds[elementIds.length - 2]);
 				table.insertAdjacentHTML("afterend", person);
 			}
