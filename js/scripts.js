@@ -259,14 +259,14 @@ function addContact()
 					return;
 				}
 				
-				// TODO: add lastonline if there is time
-				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
+			// 	// TODO: add lastonline if there is time
+			// 	var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
 
-				newContact += "	<td class='buttons'>" +
-				"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
-				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
-			"</td></tr>"
-				getElementById("searchResults").innerHTML += newContact;
+			// 	newContact += "	<td class='buttons'>" +
+			// 	"<i class='far fa-edit modify-btn btn btn-defualt' onclick='editContact();'></i>" +
+			// 	"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
+			// "</td></tr>"
+			// 	getElementById("searchResults").innerHTML += newContact;
 			}
 		};
 
