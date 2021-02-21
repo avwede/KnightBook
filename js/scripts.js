@@ -159,7 +159,7 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("user").innerHTML = "Welcome " + firstName + " " + lastName + "!";
+		document.getElementById("user").innerHTML = "Welcome<br>" + firstName + " " + lastName + "!";
 	}
 } 
 
