@@ -326,6 +326,8 @@ function deleteContact(id)
 	var jsonPayload = `{ "id" : ${id} }`;
 	var url = urlBase + "/deleteContact." + extension;
 
+	document.getElementById(id).style.display = "none";
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -343,7 +345,7 @@ function deleteContact(id)
 			}
 		}
 
-		location.reload();
+		// location.reload();
 	} 
 	catch(err)
 	{
