@@ -354,6 +354,6 @@ function deleteContact(id)
 	}
 
 	document.getElementById(id).style.display = "none";
-	var index = elementIds.indexOf(id);
+	var index = elementIds.lastIndexOf(id);
 	elementIds.splice(index, 1);
 }
