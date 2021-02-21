@@ -341,7 +341,7 @@ function deleteContact(id)
 				if (jsonObject.error != "")
 					throw jsonObject.error;
 				
-				location.reload();
+				// location.reload();
 			}
 		}
 	} 
