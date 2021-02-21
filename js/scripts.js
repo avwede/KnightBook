@@ -79,13 +79,13 @@ function doRegister()
 	var password = document.getElementById("registerPassword").value;
 	var hash = md5( password );
 
-	if (firstName === "" || lastName === "" || login === "" || password === "") {
-		document.getElementById("loginResult").innerHTML = "One or more fields missing";
+	if (firstName === "" || login === "" || password === "") {
+		document.getElementById("registerResult").innerHTML = "One or more fields missing";
 		return;
 	}
 	
 	// used to display to user return result of login attempt
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("registerResult").innerHTML = "";
 
 	// create json object for backend
 	var jsonPayload = '{"firstName" : "' + firstName + '","lastName" : "' + lastName + '","login" : "' + login + '", "password" : "' + hash + '"}';
@@ -107,7 +107,7 @@ function doRegister()
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 		if (userId == 0) {
-			document.getElementById("loginResult").innerHTML = jsonObject.error;
+			document.getElementById("registerResult").innerHTML = jsonObject.error;
 			return;
 		}
 
@@ -117,7 +117,7 @@ function doRegister()
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("registerResult").innerHTML = err.message;
 	}
 }
 
