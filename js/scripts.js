@@ -324,6 +324,7 @@ function updateContact(id)
 function deleteContact(id)
 {
 	var jsonPayload = `{ "id" : ${id} }`;
+	alert(jsonPayload);
 	var url = urlBase + "/deleteContact." + extension;
 
 	var xhr = new XMLHttpRequest();
