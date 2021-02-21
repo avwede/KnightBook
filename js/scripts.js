@@ -8,14 +8,14 @@ var firstName;
 var lastName;
 var lastElement = "contactHeader";
 
-function doLogin()
+function doLogin(username, pass)
 {
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	var login = username || document.getElementById("loginName").value;
+	var password = pass || document.getElementById("loginPassword").value;
 
 	if (login === "" && password === "") {
 		document.getElementById("loginResult").innerHTML = "Please Enter Valid Username/Password combination";
@@ -113,8 +113,7 @@ function doRegister()
 			return;
 		}
 
-		saveCookie();
-		window.location.replace("contacts.html");
+		doLogin(login, password);
 	}
 	catch(err)
 	{
