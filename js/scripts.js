@@ -335,7 +335,8 @@ function deleteContact(id)
 					throw jsonObject.error;
 			}
 		}
-		searchContacts();
+
+		location.reload();
 	} 
 	catch(err)
 	{
