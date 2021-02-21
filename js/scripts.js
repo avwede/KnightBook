@@ -274,7 +274,7 @@ function addContact()
 			"</td></tr>"
 				getElementById("searchResults").innerHTML += newContact;
 
-				searchContacts();
+				window.href.location = "contacts.html";
 			}
 		};
 
