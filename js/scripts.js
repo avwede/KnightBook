@@ -263,7 +263,7 @@ function addContact()
 					return;
 				}
 
-				window.location.href = "contacts.html";
+				location.reload();
 			}
 		};
 
