@@ -323,7 +323,7 @@ function updateContact(id)
 
 function deleteContact(id)
 {
-	alert(id + " " + typeof(id));
+	id = id.parentElement.parentElement.id;
 	var jsonPayload = `{ "id" : ${id} }`;
 	alert(jsonPayload);
 	var url = urlBase + "/deleteContact." + extension;
