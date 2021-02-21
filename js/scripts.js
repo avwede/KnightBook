@@ -223,7 +223,7 @@ function searchContacts()
 					elementIds.push(id);
 				});
 
-				lastElement = elementIds[elementIds.length - 1];
+				lastElement = elementIds[elementIds.length - 1]
 
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
@@ -349,17 +349,18 @@ function deleteContact(id)
 				
 				if (jsonObject.error != "")
 					throw jsonObject.error;
-
-				document.getElementById(id).style.display = "none";
-				var index = elementIds.indexOf(id);
-				elementIds.splice(index, 1);
-
-				lastElement = elementIds[elementIds.length - 1];
 			}
 		}
 	} 
 	catch(err)
 	{
 		alert(err.message);
+		return;
 	}
+
+	document.getElementById(id).style.display = "none";
+	var index = elementIds.indexOf(id);
+	elementIds.splice(index, 1);
+
+	lastElement = elementIds[elementIds.length - 1];
 }
