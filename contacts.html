@@ -67,7 +67,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="addContact();">Submit</button>
+                <button type="button" id="addContactButton" class="btn btn-primary" onclick="addContact();">Submit</button>
                 <!-- <p id="addEditResult"></p> -->
                 <p id="contactAddResult"></p>
               </div>
@@ -85,30 +85,7 @@
                 <th>Major</th>
                 <th></th>
               </tr>
-              <div id="searchResults">
-              <!-- <tr>
-                <td>Joe</td>
-                <td>Biden</td>
-                <td>malarkey@diamondjoe.com</td>
-                <td>555-555-5555</td>
-                <td>Political Science</td>
-                <td class="buttons">
-                  <i class="far fa-edit modify-btn btn btn-defualt" onclick="editContact();"></i>
-                  <i class="fas fa-trash-alt modify-btn btn btn-default" onclick="deleteContact();"></i>
-                </td>
-              </tr>
-              <tr>
-                <td>Knightro</td>
-                <td>The Knight</td>
-                <td>knightro@knights.ucf.edu</td>
-                <td>111-111-1111</td>
-                <td>Mascotting</td>
-                <td class="buttons">
-                  <i class="far fa-edit modify-btn btn btn-default" onclick="editContact();"></i>
-                  <i class="fas fa-trash-alt modify-btn btn btn-default" onclick="deleteContact();"></i>
-                </td>
-              </tr> -->
-              </div>
+              <div id="searchResults"></div>
             </table>
             <!--<p id="contactList">No contacts found.</p>-->
         </div>

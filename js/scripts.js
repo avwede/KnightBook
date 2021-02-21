@@ -176,9 +176,6 @@ function searchContacts()
 	var header = `<tr class="bg-warning" id="contactHeader"><th>First Name</th><th>Last Name</th><th>Phone</th><th>Email</th><th>Major</th><th></th></tr>`;
 	var srch = document.getElementById("searchText").value;
 
-	// var searchInsert = document.getElementById("searchResults");
-	// if (searchInsert)
-	// 	searchInsert.remove();
 	document.getElementById("contacts").innerHTML = header;
 
 	// result for later
@@ -202,7 +199,6 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
-				// nameList += "<div id='searchResults'>";
 				
 				for(let i=0; i<jsonObject.id.length; i++)
 				{
@@ -218,8 +214,6 @@ function searchContacts()
                   				"<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact();'></i>" +
                 				"</td></tr>"
 				}
-				
-				// nameList += "</div>";
 
 				let table = document.getElementById("contactHeader");
 				table.insertAdjacentHTML("afterend", nameList);
@@ -264,8 +258,6 @@ function addContact()
 					document.getElementById("contactAddResult").innerHTML = jsonObject.error;
 					return;
 				}
-
-				window.href.location = "contacts.html";
 				
 				// TODO: add lastonline if there is time
 				var newContact = `<tr id="${jsonObject.id}"><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${phone}</td><td>${major}</td>`;
@@ -285,6 +277,9 @@ function addContact()
 	}
 
 	$('#addEditModal').modal('hide');
+	$('#addContactButton').click(function() {
+		location.reload();
+	});
 }
 
 function updateContact() 
