@@ -8,32 +8,33 @@ var firstName;
 var lastName;
 var lastElement = "contactHeader";
 
-function doLogin()
+function doLogin(username, pass, id)
 {
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	htmlID = id || "loginResult";
+	var login = username || document.getElementById("loginName").value;
+	var password = pass || document.getElementById("loginPassword").value;
 
 	if (login === "" && password === "") {
-		document.getElementById("loginResult").innerHTML = "Please Enter Valid Username/Password combination";
+		document.getElementById(htmlID).innerHTML = "Please Enter Valid Username/Password combination";
 		return;
 	}
 	if (login === "") {
-		document.getElementById("loginResult").innerHTML = "Please enter a username";
+		document.getElementById(htmlID).innerHTML = "Please enter a username";
 		return;
 	}
 	if (password === "") {
-		document.getElementById("loginResult").innerHTML = "Please enter a password";
+		document.getElementById(htmlID).innerHTML = "Please enter a password";
 		return;
 	}
 
 	var hash = md5( password );
 	
 	// used to display to user return result of login attempt
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById(htmlID).innerHTML = "";
 
 	// create json object for backend
 	// var jsonPayload = `{"login" : "${login}", "password" : "${hash}"}`;
@@ -53,7 +54,7 @@ function doLogin()
 		
 		if( userId < 1 )
 		{
-			document.getElementById("loginResult").innerHTML = "Username/Password combination incorrect";
+			document.getElementById(htmlID).innerHTML = "Username/Password combination incorrect";
 			return;
 		}
 		
@@ -66,7 +67,7 @@ function doLogin()
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById(htmlID).innerHTML = err.message;
 	}
 }
 
@@ -99,29 +100,26 @@ function doRegister()
 		// send payload to register api
 		xhr.send(jsonPayload);
 		
-		alert("before");
 		// get response from api
 		var jsonObject = JSON.parse( xhr.responseText );
-		alert("after");
 		
 		// save values from api response
 		userId = jsonObject.id;
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
+
 		if (userId == 0) {
 			document.getElementById("registerResult").innerHTML = jsonObject.error;
 			return;
 		}
 
-		saveCookie();
+		doLogin(login, password, "registerResult");
 	}
 	catch(err)
 	{
 		document.getElementById("registerResult").innerHTML = err.message;
 		return;
 	}
-
-	window.location.href = "contacts.html";
 }
 
 function saveCookie()
@@ -162,7 +160,9 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("user").innerHTML = "Welcome<br>" + firstName + " " + lastName + "!";
+		var welcome = `Welcome<br>${firstName}`;
+		welcome += (lastName == "" ? "!" : (" " + lastName + "!"));
+		document.getElementById("user").innerHTML = welcome;
 	}
 } 
 
