@@ -26,9 +26,25 @@ else
         {
             returnWithError("Could Not Create Account");
         }
-        // $stmt = $conn->prepare($sql);
-        // $stmt->bind_param($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
-        // $stmt->execute();
+        
+        // Process user input and query the database to see if the user's information is present.
+		$sql = "SELECT ID, FirstName, LastName FROM Users where Login='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0)
+		{
+			// If the login info is present, put the results in an associative array and return JSON. 
+			$row = $result->fetch_assoc();
+			$firstName = $row["FirstName"];
+			$lastName = $row["LastName"];
+			$id = $row["ID"];
+			
+			returnWithInfo($firstName, $lastName, $id);
+		}
+        else
+        {
+            returnWithError("Could Not Create Account");
+        }
     }
     $conn->close();
 }
