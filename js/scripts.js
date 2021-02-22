@@ -296,7 +296,7 @@ function addContact()
 function editRow(id) 
 {
 	var parentId = id.parentElement.parentElement.id;
-	var tdList = document.getElementById(parentId).childNodes;
+	var tdList = document.getElementById(parentId).childNodes.childNodes;
 	id.addEventListener("click", () => updateContact(tdList), true);
 
 	for (var i = 1; i < 11; i += 2)
@@ -310,7 +310,7 @@ function editRow(id)
 
 function updateContact(tdList)
 {
-	alert(tdList);
+	alert(tdList.value);
 	var contactId = tdList[1].parentElement.id;
 	
 
