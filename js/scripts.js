@@ -292,7 +292,8 @@ function editRow(id)
 {
 	var parentId = id.parentElement.parentElement.id;
 	var tdList = document.getElementById(parentId).childNodes;
-	id.addEventListener("click", () => updateContact(tdList), true);
+	// id.addEventListener("click", () => updateContact(tdList), true);
+	id.onclick(() => updateContact(tdList));
 
 	for (var i = 0; i < 5; i ++)
 	{
