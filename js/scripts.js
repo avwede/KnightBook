@@ -300,7 +300,7 @@ function editRow(id)
 	}
 
 	id.className = "far fa-save modify-btn btn btn-default";
-	// id.onclick = "";
+	id.onclick = "";
 }
 
 function updateContact(tdList)
@@ -334,17 +334,18 @@ function updateContact(tdList)
 	try
 	{
 		xhr.send(jsonPayload);
-		var jsonObject = JSON.parse(xhr.responseText);
-
-		if (jsonObject.error != "")
+		if (this.readyState == 4 && this.status == 200) 
 		{
-			document.getElementById("searchResults").innerHTML = jsonObject.error;
-			return;
+			var jsonObject = JSON.parse(xhr.responseText);
+
+			if (jsonObject.error != "")
+				throw jsonObject.error;
 		}
 	}
 	catch (err)
 	{
 		document.getElementById("searchResults").innerHTML = err.message;
+		return;
 	}
 }
 
