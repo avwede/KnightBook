@@ -343,9 +343,6 @@ function updateContact(tdList)
 			document.getElementById("searchResults").innerHTML = jsonObject.error;
 			return;
 		}
-
-		// window.location.href = "contacts.html";
-		// searchContacts();
 	}
 	catch (err)
 	{
