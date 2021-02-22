@@ -292,8 +292,7 @@ function editRow(id)
 {
 	var parentId = id.parentElement.parentElement.id;
 	var tdList = document.getElementById(parentId).childNodes;
-	// id.addEventListener("click", () => updateContact(tdList), true);
-	id.onclick(() => updateContact(tdList));
+	id.addEventListener("click", () => updateContact(tdList), true);
 
 	for (var i = 0; i < 5; i ++)
 	{
@@ -301,7 +300,7 @@ function editRow(id)
 	}
 
 	id.className = "far fa-save modify-btn btn btn-default";
-	id.onclick = "";
+	// id.onclick = "";
 }
 
 function updateContact(tdList)
