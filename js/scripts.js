@@ -337,6 +337,7 @@ function updateContact(tdList)
 	{
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse(xhr.responseText);
+		console.log(jsonObject);
 
 		if (jsonObject.error != "")
 		{
