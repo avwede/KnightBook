@@ -212,10 +212,7 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
 
-					nameList += `<td class='buttons'>
-									<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
-									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
-								</td></tr>`;
+					nameList += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-default' onclick='editRow(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
 
 					lastElement = id;
 				});
