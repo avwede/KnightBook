@@ -326,7 +326,7 @@ function updateContact(tdList)
 		tdList[i].innerHTML = `${tdList[i].firstElementChild.value}`;
 	}
 
-	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}" }`;
+	var jsonPayload = `{ "id" : ${contactId}, "firstName" : "${firstName}", "lastName" : "${lastName}", "email" : "${email}", "phone" : "${phone}", "major" : "${major}", "userId" : ${userId} }`;
 	document.getElementById("searchResults").innerHTML = "";
 	
 	var url = urlBase + "/updateContact." + extension;
