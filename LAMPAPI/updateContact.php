@@ -8,7 +8,7 @@ $conn = new mysqli("localhost", "Group25", "25!!Poos", "KnightBook");
 // Check the connection, return an error if connection fails. 
 if ($conn->connect_error) 
 {
-	returnWithError( $conn->connect_error );
+	returnJSON( $conn->connect_error );
 } 
 else
 {
@@ -16,34 +16,28 @@ else
 
 	if ($conn->query($sql) === FALSE)
 	{
-		returnWithError("Could not update contact.");
+		returnJSON("Could not update contact.");
 	}
 	$conn->close();
 }
 
-returnWithInfo("Success");
+returnJSON("Success");
 
 function getRequestInfo()
 {
-	return json_decode(file_get_contents('php://input'), true);
+    return json_decode(file_get_contents('php://input'), true);
 }
 
-function returnWithError( $err )
+function returnJSON( $error )
 {
-	$retValue = '{"error":"' . $err . '"}';
-	sendResultInfoAsJson( $retValue );
-}
-
-function returnWithInfo( $message )
-{
-	$retValue = '{"message":"' . $message . '", "error" : ""}';
+	$retValue = '{"error" : "' . $error . '"}';
 	sendResultInfoAsJson( $retValue );
 }
 
 function sendResultInfoAsJson( $obj )
 {
-	header('Content-type: application/json');
-	echo $obj;
+    header('Content-type: application/json');
+    echo $obj;
 }
 
 ?>
