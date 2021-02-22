@@ -296,7 +296,7 @@ function editRow(id)
 
 	console.log(tdList);
 
-	for (var i = 1; i < 11; i += 2)
+	for (var i = 0; i < 5; i ++)
 	{
 		tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
 	}
