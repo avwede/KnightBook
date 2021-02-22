@@ -335,7 +335,6 @@ function updateContact(tdList)
 	{
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse(xhr.responseText);
-		console.log(jsonObject);
 
 		if (jsonObject.error != "")
 		{
@@ -363,7 +362,7 @@ function deleteContact(id)
 		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.stats == 200)
+			if (this.readyState == 4 && this.status == 200)
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 				
