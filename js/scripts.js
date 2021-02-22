@@ -1,5 +1,3 @@
-
-
 var urlBase = 'http://knightbook.rocks/LAMPAPI';
 var extension = 'php';
 
@@ -212,7 +210,10 @@ function searchContacts()
 					nameList += `<td> ${jsonObject.email[i]} </td>`;
 					nameList += `<td> ${jsonObject.major[i]} </td>`;
 
-					nameList += `<td class='buttons'><i class='far fa-edit modify-btn btn btn-default' onclick='editRow(this);'></i><i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i></td></tr>`;
+					nameList += `<td class='buttons'>
+									<i class='far fa-edit modify-btn btn btn-defualt' onclick='updateContact(this);'></i>
+									<i class='fas fa-trash-alt modify-btn btn btn-default' onclick='deleteContact(this);'></i>
+								</td></tr>`;
 
 					lastElement = id;
 				});
@@ -296,12 +297,9 @@ function editRow(id)
 	var tdList = document.getElementById(parentId).childNodes;
 	id.addEventListener("click", () => updateContact(tdList), true);
 
-	for (var i = 0; i < 11; i++)
-		alert(tdList[i]);
 	for (var i = 1; i < 11; i += 2)
 	{
-		var val = tdList[i].childNodes.innerHTML;
-		tdList[i].childNodes.innerHTML = `<input type="text" value="${val}"/>`
+		tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
 	}
 
 	id.className = "far fa-save modify-btn btn btn-default";
