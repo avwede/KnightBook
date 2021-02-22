@@ -296,10 +296,10 @@ function editRow(id)
 	var tdList = document.getElementById(parentId).childNodes;
 	id.addEventListener("click", () => updateContact(tdList), true);
 
-	for (var i = 1; i < 11; i += 2)
-	{
-		tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
-	}
+	// for (var i = 1; i < 11; i += 2)
+	// {
+	// 	tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
+	// }
 
 	id.className = "far fa-save modify-btn btn btn-default";
 	id.onclick = "";
