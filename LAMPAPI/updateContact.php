@@ -18,6 +18,10 @@
 		{
 			returnWithError("Could not update contact.");
 		}
+		else
+		{
+			returnWithInfo("Success");
+		}
 
 		$conn->close();
 	}
