@@ -300,8 +300,8 @@ function editRow(id)
 		alert(tdList[i]);
 	for (var i = 1; i < 11; i += 2)
 	{
-		var val = tdList[i].innerHTML;
-		tdList[i].innerHTML = `<input type="text" value="${val}"/>`
+		var val = tdList[i].childNodes.innerHTML;
+		tdList[i].childNodes.innerHTML = `<input type="text" value="${val}"/>`
 	}
 
 	id.className = "far fa-save modify-btn btn btn-default";
