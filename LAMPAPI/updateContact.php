@@ -18,13 +18,11 @@
 		{
 			returnWithError("Could not update contact.");
 		}
-		else
-		{
-			returnWithInfo("Successfully updated contact.");
-		}
 
 		$conn->close();
 	}
+
+	returnWithInfo("Success");
 
 	function getRequestInfo()
 	{
