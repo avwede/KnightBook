@@ -20,9 +20,9 @@ else
 	}
 	else
 	{
-		returnJSON("Success");
+		returnJSON("");
 	}
-	
+
 	$conn->close();
 }
 
