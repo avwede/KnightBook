@@ -294,8 +294,6 @@ function editRow(id)
 	var tdList = document.getElementById(parentId).childNodes;
 	id.addEventListener("click", () => updateContact(tdList), true);
 
-	console.log(tdList);
-
 	for (var i = 0; i < 5; i ++)
 	{
 		tdList[i].innerHTML = `<input type="text" value="${tdList[i].innerHTML}"/>`
