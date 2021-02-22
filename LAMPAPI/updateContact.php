@@ -18,10 +18,13 @@ else
 	{
 		returnJSON("Could not update contact.");
 	}
+	else
+	{
+		returnJSON("Success");
+	}
+	
 	$conn->close();
 }
-
-returnJSON("Success");
 
 function getRequestInfo()
 {
