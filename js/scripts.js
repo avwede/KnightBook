@@ -309,19 +309,19 @@ function updateContact(tdList)
 {
 	contactId = tdList[1].parentElement.id;
 
-	var firstName = tdList[1].firstElementChild.value;
-	var lastName = tdList[3].firstElementChild.value;
-	var phone = tdList[5].firstElementChild.value;
-	var email = tdList[7].firstElementChild.value;
-	var major = tdList[9].firstElementChild.value;
-	var editButton = tdList[11].firstElementChild;
+	var firstName = tdList[0].firstElementChild.value;
+	var lastName = tdList[1].firstElementChild.value;
+	var phone = tdList[2].firstElementChild.value;
+	var email = tdList[3].firstElementChild.value;
+	var major = tdList[4].firstElementChild.value;
+	var editButton = tdList[5].firstElementChild;
 
 	editButton.className = "far fa-edit modify-btn btn btn-default";
 	editButton.onclick = "editRow(this);";
 	editButtonNew = editButton.cloneNode();
 	editButton.parentNode.replaceChild(editButtonNew, editButton);
 
-	for (var i = 1; i < 11; i += 2)
+	for (var i = 0; i < 5; i ++)
 	{
 		tdList[i].innerHTML = `${tdList[i].firstElementChild.value}`;
 	}
