@@ -310,7 +310,7 @@ function editRow(id)
 
 function updateContact(tdList)
 {
-	var contactId = tdList[1].parentElement.parentElement.id;
+	var contactId = tdList[1].parentElement.id;
 	
 
 	var firstName = tdList[1].firstElementChild.value;
