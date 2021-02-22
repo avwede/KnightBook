@@ -338,14 +338,14 @@ function updateContact(tdList)
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse(xhr.responseText);
 
-		if (jsonObject.hasOwnProperty("error"))
+		if (jsonObject.error != "")
 		{
 			document.getElementById("searchResults").innerHTML = jsonObject.error;
 			return;
 		}
 
 		// window.location.href = "contacts.html";
-		searchContacts();
+		// searchContacts();
 	}
 	catch (err)
 	{
