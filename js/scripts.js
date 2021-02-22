@@ -297,7 +297,7 @@ function editRow(id)
 {
 	var parentId = id.parentElement.parentElement.id;
 	var tdList = document.getElementById(parentId).childNodes;
-	id.addEventListener("click", () => updateContact(tdList), true);
+	id.addEventListener("click", () => updateContact(tdList, parentId), true);
 
 	for (var i = 1; i < 11; i += 2)
 	{
@@ -308,10 +308,10 @@ function editRow(id)
 	id.onclick = "";
 }
 
-function updateContact(tdList)
+function updateContact(tdList, contactId)
 {
-	alert(tdList.innerHTML);
-	var contactId = tdList[1].parentElement.id;
+	// var contactId = tdList[1].parentElement.id;
+	alert(contactId);
 	
 
 	var firstName = tdList[1].firstElementChild.value;
