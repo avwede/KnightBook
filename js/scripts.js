@@ -97,21 +97,18 @@ function doRegister()
 	{
 		// send payload to register api
 		xhr.send(jsonPayload);
-		if (this.readyState == 4 && this.status == 200) 
-		{
-			// get response from api
-			var jsonObject = JSON.parse( xhr.responseText );
-			
-			// save values from api response
-			userId = jsonObject.id;
-			firstName = jsonObject.firstName;
-			lastName = jsonObject.lastName;
+		// get response from api
+		var jsonObject = JSON.parse( xhr.responseText );
+		
+		// save values from api response
+		userId = jsonObject.id;
+		firstName = jsonObject.firstName;
+		lastName = jsonObject.lastName;
 
-			if (userId == 0)
-				throw jsonObject.error;
+		if (userId == 0)
+			throw jsonObject.error;
 
-			doLogin(login, password, "registerResult");
-		}
+		doLogin(login, password, "registerResult");
 	}
 	catch(err)
 	{
