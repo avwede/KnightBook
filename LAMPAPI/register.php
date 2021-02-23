@@ -41,6 +41,7 @@ else
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
 			$id = $row["ID"];
+            returnWithInfo($firstName, $lastName, $id);
 		}
         else
         {
@@ -49,8 +50,6 @@ else
     }
     $conn->close();
 }
-
-returnWithInfo($firstName, $lastName, $id);
 
 function getRequestInfo()
 {
