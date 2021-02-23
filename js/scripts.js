@@ -97,10 +97,10 @@ function doRegister()
 	{
 		// send payload to register api
 		xhr.send(jsonPayload);
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+		// xhr.onreadystatechange = function() 
+		// {
+		// 	if (this.readyState == 4 && this.status == 200) 
+		// 	{
 				// get response from api
 				var jsonObject = JSON.parse( xhr.responseText );
 				
@@ -109,13 +109,16 @@ function doRegister()
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				if (userId == 0)
-					throw jsonObject.error;
+				if (userId == 0) 
+				{
+					document.getElementById("registerResult").innerHTML = err.message;
+					return;
+				}
 
 				doLogin(login, password, "registerResult");
 			}
-		}
-	}
+	// 	}
+	// }
 	catch(err)
 	{
 		document.getElementById("registerResult").innerHTML = err.message;
