@@ -111,7 +111,7 @@ function doRegister()
 
 				if (userId == 0) 
 				{
-					document.getElementById("registerResult").innerHTML = err.message;
+					document.getElementById("registerResult").innerHTML = jsonObject.error;
 					return;
 				}
 
