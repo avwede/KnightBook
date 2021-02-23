@@ -107,10 +107,8 @@ function doRegister()
 			firstName = jsonObject.firstName;
 			lastName = jsonObject.lastName;
 
-			if (userId == 0) {
-				document.getElementById("registerResult").innerHTML = jsonObject.error;
-				return;
-			}
+			if (userId == 0)
+				throw jsonObject.error;
 
 			doLogin(login, password, "registerResult");
 		}
