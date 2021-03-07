@@ -6,8 +6,9 @@
 
 ## Meet the Team! 
 ##### Processes for Object Oriented Software Development COP 4331 - Group 25   
-Adrian Cooper  
-Ashley Voglewede  
-Hannah Graves  
-Prathik Ramesh  
-Stephen Maldonado  
+[Adrian Cooper](https://github.com/adriancooper13)  
+[Ashley Voglewede](https://github.com/avwede)  
+[Hannah Graves](https://github.com/hannahgraves)  
+[Prathik Ramesh](https://github.com/prathik2001)  
+[Stephen Maldonado](https://github.com/Stephen527)
+
